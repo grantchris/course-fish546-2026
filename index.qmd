@@ -42,8 +42,8 @@ You will work across three computing tiers. They come online in stages; each has
 | Tier | Platform | Role | When |
 |---------------|--------------------------|--------------------------|------------|
 | Your computer | Local shell + Git/GitHub | Editing, version control | Before Week 1 |
-| Raven | RStudio Server at <http://raven.fish.washington.edu:8787> | **Home** for most weekly work | Week 1 |
-| Hyak / Klone | HPC, in your browser: RStudio through [Hyak OnDemand](https://ondemand.hyak.uw.edu) (UW VPN off campus) | When Raven is not enough | Week 3 |
+| Raven | RStudio Server at <http://raven.fish.washington.edu:8787> ([UW VPN](tutorials/01-your-computer.html#vpn) off campus) | **Home** for most weekly work | Week 1 |
+| Hyak / Klone | HPC, in your browser: RStudio through [Hyak OnDemand](https://ondemand.hyak.uw.edu) ([UW VPN](tutorials/01-your-computer.html#vpn) off campus) | When Raven is not enough | Week 3 |
 
 Course GitHub Organization: <https://github.com/course-fish546-2026>
 

@@ -19,6 +19,7 @@
     <a href="#shell">3 · Shell basics</a>
     <a href="#structure">4 · Project structure</a>
     <a href="#loop">5 · Clone → commit → push</a>
+    <a href="#vpn">6 · UW VPN (Husky OnNet)</a>
     <a href="#done">✔ Completion</a>
     <div class="prog-wrap">
       <div class="lbl"><span>Progress</span><span class="prog-pct">0/0</span></div>
@@ -168,6 +169,36 @@
       </div>
     </section>
 
+    <section id="vpn">
+      <div class="eyebrow">Step 6</div>
+      <h2 class="sec">UW VPN: Husky OnNet</h2>
+      <p class="lede">Raven and Hyak OnDemand only answer connections from the UW network. On campus you're already on it. Anywhere else (home, a coffee shop, travelling) you connect through <strong>Husky OnNet</strong>, the UW VPN, first. Install it now so it's ready for Tutorial 2.</p>
+      <div class="card">
+        <h4>Install (once)</h4>
+        <ol>
+          <li>Read the Husky OnNet <a href="https://it.uw.edu/tools-services-support/networks-connectivity/husky-onnet/installing-configuring-and-using-husky-onnet/terms-and-conditions/">Terms and Conditions</a> and click <strong>I Agree</strong>. That takes you to the download page.</li>
+          <li>Download the installer for your system (Windows, macOS, or Linux <code>.rpm</code>/<code>.deb</code>) and run it, following the installer's prompts.</li>
+          <li>The app it installs is called <strong>BIG-IP Edge Client</strong> (F5 Networks icon). On Linux the package is <code>f5vpn</code>.</li>
+        </ol>
+        <h4>Connect (every time you're off campus)</h4>
+        <ol>
+          <li>Open <strong>BIG-IP Edge Client</strong>: search "big" in the Windows Start menu or macOS Spotlight.</li>
+          <li>It starts connecting on its own; if it doesn't, click <strong>Connect</strong>.</li>
+          <li>Sign in with your UW NetID in the pop-up window and approve Duo.</li>
+        </ol>
+        <p>Then open Raven or OnDemand in your browser as usual.</p>
+        <h4>Check it worked</h4>
+        <p>With the VPN connected, open the <a href="https://husky-onnet-test.uw.edu/vpn-test/">Husky OnNet test page</a>. You should see <strong>Congratulations!</strong> If it says you're not connected, reopen the client and connect again.</p>
+        <h4>Disconnect</h4>
+        <p>Windows: click <strong>Disconnect</strong> in the client. macOS: click the Edge Client icon in the menu bar and choose <strong>Turn VPN Off</strong>.</p>
+      </div>
+      <div class="tip">Leave the connection setting at its default. If Raven or OnDemand won't load off campus, the VPN being off is the first thing to check. UW-IT's <a href="https://it.uw.edu/tools-services-support/networks-connectivity/husky-onnet/installing-configuring-and-using-husky-onnet/">Husky OnNet guide</a> covers phones, tablets, and uninstalling.</div>
+      <div class="check" data-check>
+        <label><input type="checkbox"> I installed Husky OnNet (BIG-IP Edge Client)</label>
+        <label><input type="checkbox"> I connected and saw "Congratulations!" on the test page (or I'm always on campus and will do this if I work elsewhere)</label>
+      </div>
+    </section>
+
     <section id="done">
       <div class="eyebrow">Finish</div>
       <h2 class="sec">✔ Completion <span class="tag">Tutorial 1</span></h2>
@@ -175,7 +206,8 @@
       <div class="done-block">## Tutorial 1 — Your Computer ✅
 Repo: https://github.com/course-fish546-2026/&lt;your-repo&gt;
 First commit: &lt;paste the commit URL&gt;
-Repository created from the project template; README personalized.</div>
+Repository created from the project template; README personalized.
+Husky OnNet installed: yes / no (always on campus)</div>
       <div class="note">Next up: <a href="02-raven.html">Tutorial 2 — Raven</a>, where you'll do this same loop on the lab's server. We work through it together in the Week 1 Thursday session (Oct 8); feel free to start early.</div>
     </section>
   </main>

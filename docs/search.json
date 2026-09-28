@@ -7,6 +7,13 @@
     "text": "You will work across three computing platforms this quarter. Each has a self-paced tutorial that opens in your browser and ends with a completion checklist. You do not need all three at once: only Tutorial 1 is required before the first class."
   },
   {
+    "objectID": "setup.html#working-off-campus",
+    "href": "setup.html#working-off-campus",
+    "title": "Setup",
+    "section": "Working off campus",
+    "text": "Working off campus\nRaven and Hyak OnDemand only load from the UW network. Off campus, connect to Husky OnNet, the UW VPN, first. Install it once in Tutorial 1, Step 6."
+  },
+  {
     "objectID": "setup.html#working-in-rstudio",
     "href": "setup.html#working-in-rstudio",
     "title": "Setup",
@@ -538,7 +545,7 @@
     "href": "index.html#platforms",
     "title": "Bioinformatics for Environmental Sciences",
     "section": "Platforms",
-    "text": "Platforms\nYou will work across three computing tiers. They come online in stages; each has a setup tutorial.\n\n\n\nTier\nPlatform\nRole\nWhen\n\n\n\n\nYour computer\nLocal shell + Git/GitHub\nEditing, version control\nBefore Week 1\n\n\nRaven\nRStudio Server at http://raven.fish.washington.edu:8787\nHome for most weekly work\nWeek 1\n\n\nHyak / Klone\nHPC, in your browser: RStudio through Hyak OnDemand (UW VPN off campus)\nWhen Raven is not enough\nWeek 3\n\n\n\nCourse GitHub Organization: https://github.com/course-fish546-2026"
+    "text": "Platforms\nYou will work across three computing tiers. They come online in stages; each has a setup tutorial.\n\n\n\nTier\nPlatform\nRole\nWhen\n\n\n\n\nYour computer\nLocal shell + Git/GitHub\nEditing, version control\nBefore Week 1\n\n\nRaven\nRStudio Server at http://raven.fish.washington.edu:8787 (UW VPN off campus)\nHome for most weekly work\nWeek 1\n\n\nHyak / Klone\nHPC, in your browser: RStudio through Hyak OnDemand (UW VPN off campus)\nWhen Raven is not enough\nWeek 3\n\n\n\nCourse GitHub Organization: https://github.com/course-fish546-2026"
   },
   {
     "objectID": "index.html#textbook-optional",

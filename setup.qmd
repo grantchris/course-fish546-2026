@@ -7,13 +7,17 @@ You will work across **three computing platforms** this quarter. Each has a self
 
 | # | Tutorial | Platform | When | What you'll be able to do |
 |---|----------|----------|------|---------------------------|
-| 1 | [Your Computer: Shell & Git/GitHub](tutorials/01-your-computer.html) | Your laptop/desktop | **Before Week 1** (~1 hour) | Install the tools, create your repository from the template, run the clone → commit → push loop |
+| 1 | [Your Computer: Shell & Git/GitHub](tutorials/01-your-computer.html) | Your laptop/desktop | **Before Week 1** (~1 hour) | Install the tools and the UW VPN, create your repository from the template, run the clone → commit → push loop |
 | 2 | [Raven: RStudio Server & Reproducible Analysis](tutorials/02-raven.html) | Raven | **Week 1**, Thursday session (~1 hour) | Log into the lab server, run an analysis, render a notebook entry, push results |
 | 3 | [Hyak / Klone: RStudio on the Cluster](tutorials/03-hyak.html) | Hyak / Klone | **Week 3** (~1 hour) | Launch RStudio on a Klone compute node through OnDemand and run the lab's tools |
 
 ::: {.callout-tip}
 Raven is home. Your laptop is for editing and Git. Hyak is for when Raven is not enough. Hyak is the hardest of the three; give yourself time and don't panic when something breaks.
 :::
+
+## Working off campus
+
+Raven and Hyak OnDemand only load from the UW network. Off campus, connect to **Husky OnNet**, the UW VPN, first. Install it once in [Tutorial 1, Step 6](tutorials/01-your-computer.html#vpn).
 
 ## Working in RStudio
 
