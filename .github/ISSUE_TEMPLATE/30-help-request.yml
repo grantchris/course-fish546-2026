@@ -36,7 +36,7 @@ body:
     id: error
     attributes:
       label: Exact error message / output
-      description: Copy-paste the full text (not a screenshot of text). On Klone, include the job ID and the tail of slurm-*.out.
+      description: Copy-paste the full text (not a screenshot of text). On Klone, include your OnDemand session size (CPUs, memory, hours), the container you chose, and the job ID (echo $SLURM_JOB_ID).
       render: text
     validations:
       required: true

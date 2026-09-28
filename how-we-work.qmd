@@ -50,7 +50,7 @@ You will use three computers. They come online in stages, not all at once.
 |---|---|---|
 | Your computer | Editing, Git, GitHub | Tutorial 1, before Week 1 |
 | Raven (RStudio Server) | **Home.** Interactive analysis, rendering, most weekly work | Tutorial 2, Week 1 |
-| Hyak / Klone (HPC) | When Raven is not enough: large mapping, denoising, anything that needs a batch job | Tutorial 3, Week 3 |
+| Hyak / Klone (HPC) | When Raven is not enough: large mapping, denoising, anything that needs more memory or CPUs. Reached through RStudio on Hyak OnDemand. | Tutorial 3, Week 3 |
 
 See [Setup](setup.qmd) for the tutorials.
 
@@ -177,7 +177,7 @@ Two forms, on the [course repository](https://github.com/sr320/course-fish546-20
 
 ### Hyak and containers
 
-Use Hyak when a step is too large, slow, or environment-sensitive for Raven. For every job, record in your notebook entry the SLURM script, job ID, container path or environment, input and output paths, and the relevant lines of `slurm-*.out`. Never run heavy analyses on the login node.
+Use Hyak when a step is too large, slow, or environment-sensitive for Raven. Work in an RStudio session launched through Hyak OnDemand with the lab container (see [Tutorial 3](tutorials/03-hyak.html)). For every session you use, record in your notebook entry the session size (CPUs, memory, hours), the job ID (`echo $SLURM_JOB_ID`), the container file name, and the input and output paths. Save slow intermediate results to files so a stopped session can pick up where it left off.
 
 ### Archiving and the compendium
 

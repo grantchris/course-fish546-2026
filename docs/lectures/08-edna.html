@@ -660,7 +660,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This lecture connects directly to the <a href="../tutorials/03-hyak.html">Hyak setup tutorial</a> — the compute-heavy steps below run as SLURM jobs on Klone.</p>
+<p>This lecture connects directly to the <a href="../tutorials/03-hyak.html">Hyak setup tutorial</a>. The compute-heavy steps below run in an RStudio session on Klone, launched through Hyak OnDemand with the lab container.</p>
 </div>
 </div>
 </section>
@@ -716,11 +716,11 @@ Note
 <li><strong>Taxonomic assignment</strong> — match ASVs/OTUs to a reference database (BLAST, or classifiers like the RDP/naïve-Bayes approach) to get names. <em>(Klone)</em></li>
 <li><strong>Build the table</strong> — a sample × taxon abundance/occurrence matrix: the analysis-ready product. <em>(Raven / laptop)</em></li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sketch of the heavy step as a Klone job — see the eDNA metabarcoding assignment</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load apptainer</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--home</span> <span class="va">$PWD</span> <span class="at">--bind</span> /gscratch/ <span class="dt">\</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  /gscratch/srlab/containers/srlab-bioinformatics-container-<span class="op">&lt;</span>hash<span class="op">&gt;</span>.sif <span class="dt">\</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>dada2-or-cutadapt-command<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sketch of the heavy step, run in RStudio on Klone (OnDemand session, lab container)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># See the eDNA metabarcoding assignment for session size and details</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dada2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>errF <span class="ot">&lt;-</span> <span class="fu">learnErrors</span>(filtFs, <span class="at">multithread =</span> <span class="dv">8</span>)   <span class="co"># match the CPUs you requested</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(errF, <span class="st">"output/week08/errF.rds"</span>)        <span class="co"># save slow steps as you go</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="ecological-readouts" class="level2">
 <h2 class="anchored" data-anchor-id="ecological-readouts">Ecological readouts</h2>

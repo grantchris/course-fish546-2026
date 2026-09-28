@@ -476,7 +476,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td>Hyak / Klone (HPC)</td>
-<td>When Raven is not enough: large mapping, denoising, anything that needs a batch job</td>
+<td>When Raven is not enough: large mapping, denoising, anything that needs more memory or CPUs. Reached through RStudio on Hyak OnDemand.</td>
 <td>Tutorial 3, Week 3</td>
 </tr>
 </tbody>
@@ -826,7 +826,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="hyak-and-containers" class="level3">
 <h3 class="anchored" data-anchor-id="hyak-and-containers">Hyak and containers</h3>
-<p>Use Hyak when a step is too large, slow, or environment-sensitive for Raven. For every job, record in your notebook entry the SLURM script, job ID, container path or environment, input and output paths, and the relevant lines of <code>slurm-*.out</code>. Never run heavy analyses on the login node.</p>
+<p>Use Hyak when a step is too large, slow, or environment-sensitive for Raven. Work in an RStudio session launched through Hyak OnDemand with the lab container (see <a href="tutorials/03-hyak.html">Tutorial 3</a>). For every session you use, record in your notebook entry the session size (CPUs, memory, hours), the job ID (<code>echo $SLURM_JOB_ID</code>), the container file name, and the input and output paths. Save slow intermediate results to files so a stopped session can pick up where it left off.</p>
 </section>
 <section id="archiving-and-the-compendium" class="level3">
 <h3 class="anchored" data-anchor-id="archiving-and-the-compendium">Archiving and the compendium</h3>

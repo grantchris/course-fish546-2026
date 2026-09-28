@@ -17,7 +17,7 @@ Take amplicon reads to an analysis-ready sample × taxon table, and reason about
 
 ## In your project
 
-**If your project is eDNA / metabarcoding:** run the full pipeline below on your own data. The compute-heavy steps run on Klone; exploration and figures on Raven or your laptop.
+**If your project is eDNA / metabarcoding:** run the full pipeline below on your own data. The compute-heavy steps (primer trimming, denoising, taxonomy) run in an RStudio session on Klone through [Hyak OnDemand](../tutorials/03-hyak.html); exploration and figures can stay on Raven or your laptop.
 
 **Every other project:** the eDNA discipline of negative controls and a false-positive floor applies to you too. Identify the equivalent in your own data and quantify it:
 
@@ -38,7 +38,24 @@ Run the pipeline on the provided 12S or COI amplicon set (paths in the pinned [P
 5. **One figure:** a stacked-bar composition plot or richness by sample.
 6. **Controls:** report what the negative or blank controls contained and what that implies about false positives.
 
-Run everything inside the lab [Apptainer container](https://robertslab.github.io/resources/klone_containers/) as SLURM jobs. Request modest `--mem` and `--time` first and scale up only if a job is killed. Keep raw reads in `data/raw/` uncommitted, with checksums recorded.
+### Running it on Klone
+
+Launch RStudio through OnDemand exactly as in [Tutorial 3](../tutorials/03-hyak.html#rstudio) (account `srlab`, partition `ckpt`, **Custom** container `/gscratch/srlab/containers/srlab-bioinformatics-container-2bd5d44.sif`), but ask for a bigger slice than the tutorial:
+
+| Setting | Start with | If it isn't enough |
+|---|---|---|
+| CPUs | 8 | 16 |
+| Memory | 32 GB | 64 GB |
+| Hours | 4 | 8 |
+
+- **Use the CPUs you asked for.** Pass the count to each tool: `cutadapt -j 8`, and `multithread = 8` in DADA2's `filterAndTrim()`, `learnErrors()`, `dada()`, and `removeBimeraDenovo()`.
+- **Work in `~/fish546`** (your `/gscratch/srlab` folder), not your home directory.
+- **Closing the browser tab does not stop your session.** Reopen it from **My Interactive Sessions**. The session ends only when its hours run out or you delete it.
+- **Save as you go.** `ckpt` sessions can occasionally be stopped early. After each slow DADA2 step, save the result (for example `saveRDS(errF, "output/week08/errF.rds")`) so a restart picks up where you left off instead of starting over.
+- **Out of memory or out of time?** Delete the session, relaunch with the next size up, and reload your saved `.rds` files.
+- **Delete the session when you're done** so the node goes back to the pool.
+
+Keep raw reads in `data/raw/` uncommitted, with checksums recorded.
 
 ## In your project, part two
 
@@ -46,7 +63,7 @@ Draft your final figure. It can be a mock-up with placeholder data, but it shoul
 
 ## What goes in your notebook entry
 
-- Code and commentary for each step, including SLURM scripts and the tail of the relevant `slurm-*.out` if you used Klone.
+- Code and commentary for each step. If you used Klone, a short platform note: the OnDemand session size (CPUs, memory, hours), the container file name, and the job ID (`echo $SLURM_JOB_ID`).
 - The read-survival table (eDNA pipeline) or the false-positive quantification (other projects).
 - The table and figure.
 - A caveats paragraph: given your controls and marker or data type, how confident are you in the detections?
