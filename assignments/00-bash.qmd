@@ -17,7 +17,7 @@ Have a working repository with the standard layout, one notebook entry rendered 
 
 ## Tasks
 
-1. **Accept your course organization invitation.** Send the instructor your GitHub username, then accept the emailed invitation (or open [github.com/orgs/course-fish546-2026/invitation](https://github.com/orgs/course-fish546-2026/invitation)). If the organization doesn't appear as an owner in the next step, this is why.
+1. **Accept your course organization invitation.** Email your GitHub username to [sr320@uw.edu](mailto:sr320@uw.edu?subject=FISH%20546%20GitHub%20username), then accept the emailed invitation (or open [github.com/orgs/course-fish546-2026/invitation](https://github.com/orgs/course-fish546-2026/invitation)). If the organization doesn't appear as an owner in the next step, this is why.
 2. **Create your repository** from the [project template](https://github.com/course-fish546-2026/project-template) into the course organization: open the template page, click the green **Use this template** button at the top right of the file list (next to the **Code** button; you must be signed in), choose **Create a new repository**, and set the owner to `course-fish546-2026`. Name it something short and yours (for example `lastname-546`). The template already contains the standard layout:
 
 ```text

@@ -13,7 +13,7 @@ This course teaches graduate students how to move from biological sequence data 
 ## Do this before Week 1
 
 1. Complete **Tutorial 1** on the [Setup](setup.qmd) page (your computer: shell, Git, GitHub, R and RStudio, and the UW VPN). About 1.5 hours, mostly installing.
-2. Accept your invitation to the [course organization](https://github.com/orgs/course-fish546-2026/invitation) (send the instructor your GitHub username first), then create your course repository from the [project template](https://github.com/course-fish546-2026/project-template) in the course organization.
+2. Accept your invitation to the [course organization](https://github.com/orgs/course-fish546-2026/invitation) (first email your GitHub username to [sr320@uw.edu](mailto:sr320@uw.edu?subject=FISH%20546%20GitHub%20username)), then create your course repository from the [project template](https://github.com/course-fish546-2026/project-template) in the course organization.
 3. Open a **Project Proposal** issue on the [course repository](https://github.com/sr320/course-fish546-2026/issues/new/choose). A rough draft is fine; you will refine it all quarter.
 
 Raven comes online in Week 1 and Hyak in Week 3. You do not need them yet.
