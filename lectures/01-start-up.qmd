@@ -87,12 +87,12 @@ For every BLAST result you use as evidence, record:
 
 ## GitHub Issues as the course notebook
 
-This course uses Issues for structured work:
+This course uses two kinds of Issues on the course repository:
 
-- Project proposal: one home-base issue for your quarter project.
-- Weekly progress: what you completed, what slipped, what comes next.
-- Help request: what failed, where, and what you already tried.
-- Bug/blocker: a reproducible failure with commands and output.
+- **Project Proposal:** one home-base issue for your quarter project. Weekly commit links and tutorial completion blocks go here as comments.
+- **Help Request:** any question, or anything that failed. Say where it happened, the exact command and error text, and what you already tried.
+
+Weekly progress goes in your notebook entry, not in an issue.
 
 ## This week in your project
 

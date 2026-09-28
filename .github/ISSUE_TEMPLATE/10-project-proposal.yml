@@ -54,7 +54,7 @@ body:
       label: Where will the heavy lifting run?
       options:
         - Raven (RStudio Server)
-        - Hyak / Klone (batch)
+        - Hyak / Klone (OnDemand)
         - Own computer
         - Mix (describe below)
     validations:
