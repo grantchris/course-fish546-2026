@@ -15,6 +15,10 @@ You will work across **three computing platforms** this quarter. Each has a self
 Raven is home. Your laptop is for editing and Git. Hyak is for when Raven is not enough. Hyak is the hardest of the three; give yourself time and don't panic when something breaks.
 :::
 
+## Working in RStudio
+
+On every platform, open your repository as an **R Project** (`fish546.Rproj`) before you start work. It sets the working directory, shows the Git tab, and keeps paths the same on your laptop, Raven, and Klone. See [R Projects in RStudio](r-projects.qmd).
+
 ## When you finish a tutorial
 
 Each tutorial ends with a completion block. Paste it as a **comment on your Project Proposal issue** in the [course repository](https://github.com/sr320/course-fish546-2026/issues). That issue is your home base for the quarter; see [How We Work](how-we-work.qmd).

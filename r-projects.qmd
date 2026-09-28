@@ -1,0 +1,87 @@
+---
+title: "R Projects in RStudio"
+subtitle: "Open your repository the same way on every platform"
+---
+
+An **R Project** is how RStudio knows which folder you are working in. Your course repository already contains one: the file `fish546.Rproj` at the top level. Opening that file, instead of just browsing to the folder, is the habit that makes your paths work the same on your laptop, Raven, and Klone.
+
+## What opening the project does
+
+When you open `fish546.Rproj`, RStudio:
+
+- sets the **working directory** to the top of your repository, so `output/week03/` means the same place every time;
+- starts a **fresh R session**, so nothing left over from another project leaks in;
+- points the **Files** pane at your repository;
+- shows the **Git** tab (commit, pull, push, diff) for that repository.
+
+With the project open you never need `setwd()`. Don't put `setwd()` in your notebooks: the path it names exists only on the machine where you wrote it, so the notebook breaks everywhere else.
+
+## Opening your project
+
+Do this every time you start work, on any platform.
+
+1. In RStudio, choose **File → Open Project…**
+2. Browse to your repository folder and select `fish546.Rproj`.
+3. Click **Open**.
+
+Where your repository usually lives:
+
+| Platform | Folder |
+|---|---|
+| Your computer | `~/GitHub/your-repo` |
+| Raven | `~/GitHub/your-repo` |
+| Klone (OnDemand RStudio) | `~/fish546/your-repo` |
+
+On your own computer you can also double-click `fish546.Rproj` in Finder or File Explorer.
+
+After the first time, you can reopen it from the **project menu** in the top-right corner of RStudio, which lists recent projects.
+
+## Checking you're in it
+
+- The **top-right corner** of RStudio shows `fish546`. If it says **Project: (None)**, you are not in a project; open it.
+- In the Console, `getwd()` prints your repository folder.
+- The **Git** tab is visible next to Environment and History.
+
+## Paths inside a notebook
+
+Rendering a notebook is the one exception to "everything starts at the top of the repository." Quarto runs each notebook's code from the folder the notebook is in, `notebooks/`, so reach the rest of the repository with `../`:
+
+```r
+read.csv("../data/processed/counts.csv")
+ggsave("../output/week03/volcano.png")
+```
+
+In the Console and Terminal, where the project sets the working directory, you drop the `../`:
+
+```r
+list.files("output/week03")
+```
+
+The `notebooks/README.md` in your repository says the same thing.
+
+## Switching and closing
+
+- **Switch** to another project from the project menu in the top-right corner. RStudio restarts R in the other project.
+- **Close** with **File → Close Project**, or pick **Close Project** from the same menu.
+- On **Klone**, each OnDemand session starts fresh. Reopen `fish546.Rproj` at the start of every session.
+
+## If your repository has no `.Rproj` file
+
+Repositories made from the template include `fish546.Rproj`. If yours doesn't, create one once:
+
+1. **File → New Project… → Existing Directory**.
+2. Browse to your repository folder and click **Create Project**.
+3. Commit the new `.Rproj` file so it's there on every platform.
+
+## What gets committed
+
+| File | Commit it? |
+|---|---|
+| `fish546.Rproj` | Yes. It's a small settings file, and every platform should have it. |
+| `.Rproj.user/` | No. RStudio's per-machine scratch folder. Your `.gitignore` already skips it. |
+| `.Rhistory`, `.RData` | No. Also already ignored. |
+
+::: {.callout-tip}
+## Don't save your workspace
+When RStudio asks **"Save workspace image to ~/.RData?"** on exit, choose **Don't Save**. To stop the question for good: **Tools → Global Options → General**, uncheck **Restore .RData into workspace at startup**, and set **Save workspace to .RData on exit** to **Never**. Your analysis should rebuild from code, not from a saved session.
+:::

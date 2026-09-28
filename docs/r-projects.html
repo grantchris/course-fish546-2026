@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Setup – 2026 :: Bioinformatics — FISH 546</title>
+<title>R Projects in RStudio – 2026 :: Bioinformatics — FISH 546</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -263,7 +298,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./setup.html" aria-current="page"> 
+    <a class="nav-link" href="./setup.html"> 
 <span class="menu-text">Setup</span></a>
   </li>  
   <li class="nav-item">
@@ -294,9 +329,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#working-in-rstudio" id="toc-working-in-rstudio" class="nav-link active" data-scroll-target="#working-in-rstudio">Working in RStudio</a></li>
-  <li><a href="#when-you-finish-a-tutorial" id="toc-when-you-finish-a-tutorial" class="nav-link" data-scroll-target="#when-you-finish-a-tutorial">When you finish a tutorial</a></li>
-  <li><a href="#why-these-three-and-where-they-come-from" id="toc-why-these-three-and-where-they-come-from" class="nav-link" data-scroll-target="#why-these-three-and-where-they-come-from">Why these three, and where they come from</a></li>
+  <li><a href="#what-opening-the-project-does" id="toc-what-opening-the-project-does" class="nav-link active" data-scroll-target="#what-opening-the-project-does">What opening the project does</a></li>
+  <li><a href="#opening-your-project" id="toc-opening-your-project" class="nav-link" data-scroll-target="#opening-your-project">Opening your project</a></li>
+  <li><a href="#checking-youre-in-it" id="toc-checking-youre-in-it" class="nav-link" data-scroll-target="#checking-youre-in-it">Checking you’re in it</a></li>
+  <li><a href="#paths-inside-a-notebook" id="toc-paths-inside-a-notebook" class="nav-link" data-scroll-target="#paths-inside-a-notebook">Paths inside a notebook</a></li>
+  <li><a href="#switching-and-closing" id="toc-switching-and-closing" class="nav-link" data-scroll-target="#switching-and-closing">Switching and closing</a></li>
+  <li><a href="#if-your-repository-has-no-.rproj-file" id="toc-if-your-repository-has-no-.rproj-file" class="nav-link" data-scroll-target="#if-your-repository-has-no-.rproj-file">If your repository has no <code>.Rproj</code> file</a></li>
+  <li><a href="#what-gets-committed" id="toc-what-gets-committed" class="nav-link" data-scroll-target="#what-gets-committed">What gets committed</a></li>
   </ul>
 </nav>
     </div>
@@ -306,8 +345,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Setup</h1>
-<p class="subtitle lead">Three platforms, brought online in stages</p>
+<h1 class="title">R Projects in RStudio</h1>
+<p class="subtitle lead">Open your repository the same way on every platform</p>
 </div>
 
 
@@ -324,38 +363,111 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>You will work across <strong>three computing platforms</strong> this quarter. Each has a self-paced tutorial that opens in your browser and ends with a completion checklist. You do not need all three at once: only Tutorial 1 is required before the first class.</p>
+<p>An <strong>R Project</strong> is how RStudio knows which folder you are working in. Your course repository already contains one: the file <code>fish546.Rproj</code> at the top level. Opening that file, instead of just browsing to the folder, is the habit that makes your paths work the same on your laptop, Raven, and Klone.</p>
+<section id="what-opening-the-project-does" class="level2">
+<h2 class="anchored" data-anchor-id="what-opening-the-project-does">What opening the project does</h2>
+<p>When you open <code>fish546.Rproj</code>, RStudio:</p>
+<ul>
+<li>sets the <strong>working directory</strong> to the top of your repository, so <code>output/week03/</code> means the same place every time;</li>
+<li>starts a <strong>fresh R session</strong>, so nothing left over from another project leaks in;</li>
+<li>points the <strong>Files</strong> pane at your repository;</li>
+<li>shows the <strong>Git</strong> tab (commit, pull, push, diff) for that repository.</li>
+</ul>
+<p>With the project open you never need <code>setwd()</code>. Don’t put <code>setwd()</code> in your notebooks: the path it names exists only on the machine where you wrote it, so the notebook breaks everywhere else.</p>
+</section>
+<section id="opening-your-project" class="level2">
+<h2 class="anchored" data-anchor-id="opening-your-project">Opening your project</h2>
+<p>Do this every time you start work, on any platform.</p>
+<ol type="1">
+<li>In RStudio, choose <strong>File → Open Project…</strong></li>
+<li>Browse to your repository folder and select <code>fish546.Rproj</code>.</li>
+<li>Click <strong>Open</strong>.</li>
+</ol>
+<p>Where your repository usually lives:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>#</th>
-<th>Tutorial</th>
 <th>Platform</th>
-<th>When</th>
-<th>What you’ll be able to do</th>
+<th>Folder</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
-<td><a href="tutorials/01-your-computer.html">Your Computer: Shell &amp; Git/GitHub</a></td>
-<td>Your laptop/desktop</td>
-<td><strong>Before Week 1</strong> (~1 hour)</td>
-<td>Install the tools, create your repository from the template, run the clone → commit → push loop</td>
+<td>Your computer</td>
+<td><code>~/GitHub/your-repo</code></td>
 </tr>
 <tr class="even">
-<td>2</td>
-<td><a href="tutorials/02-raven.html">Raven: RStudio Server &amp; Reproducible Analysis</a></td>
 <td>Raven</td>
-<td><strong>Week 1</strong>, Thursday session (~1 hour)</td>
-<td>Log into the lab server, run an analysis, render a notebook entry, push results</td>
+<td><code>~/GitHub/your-repo</code></td>
 </tr>
 <tr class="odd">
-<td>3</td>
-<td><a href="tutorials/03-hyak.html">Hyak / Klone: RStudio on the Cluster</a></td>
-<td>Hyak / Klone</td>
-<td><strong>Week 3</strong> (~1 hour)</td>
-<td>Launch RStudio on a Klone compute node through OnDemand and run the lab’s tools</td>
+<td>Klone (OnDemand RStudio)</td>
+<td><code>~/fish546/your-repo</code></td>
+</tr>
+</tbody>
+</table>
+<p>On your own computer you can also double-click <code>fish546.Rproj</code> in Finder or File Explorer.</p>
+<p>After the first time, you can reopen it from the <strong>project menu</strong> in the top-right corner of RStudio, which lists recent projects.</p>
+</section>
+<section id="checking-youre-in-it" class="level2">
+<h2 class="anchored" data-anchor-id="checking-youre-in-it">Checking you’re in it</h2>
+<ul>
+<li>The <strong>top-right corner</strong> of RStudio shows <code>fish546</code>. If it says <strong>Project: (None)</strong>, you are not in a project; open it.</li>
+<li>In the Console, <code>getwd()</code> prints your repository folder.</li>
+<li>The <strong>Git</strong> tab is visible next to Environment and History.</li>
+</ul>
+</section>
+<section id="paths-inside-a-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="paths-inside-a-notebook">Paths inside a notebook</h2>
+<p>Rendering a notebook is the one exception to “everything starts at the top of the repository.” Quarto runs each notebook’s code from the folder the notebook is in, <code>notebooks/</code>, so reach the rest of the repository with <code>../</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">"../data/processed/counts.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"../output/week03/volcano.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In the Console and Terminal, where the project sets the working directory, you drop the <code>../</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"output/week03"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>notebooks/README.md</code> in your repository says the same thing.</p>
+</section>
+<section id="switching-and-closing" class="level2">
+<h2 class="anchored" data-anchor-id="switching-and-closing">Switching and closing</h2>
+<ul>
+<li><strong>Switch</strong> to another project from the project menu in the top-right corner. RStudio restarts R in the other project.</li>
+<li><strong>Close</strong> with <strong>File → Close Project</strong>, or pick <strong>Close Project</strong> from the same menu.</li>
+<li>On <strong>Klone</strong>, each OnDemand session starts fresh. Reopen <code>fish546.Rproj</code> at the start of every session.</li>
+</ul>
+</section>
+<section id="if-your-repository-has-no-.rproj-file" class="level2">
+<h2 class="anchored" data-anchor-id="if-your-repository-has-no-.rproj-file">If your repository has no <code>.Rproj</code> file</h2>
+<p>Repositories made from the template include <code>fish546.Rproj</code>. If yours doesn’t, create one once:</p>
+<ol type="1">
+<li><strong>File → New Project… → Existing Directory</strong>.</li>
+<li>Browse to your repository folder and click <strong>Create Project</strong>.</li>
+<li>Commit the new <code>.Rproj</code> file so it’s there on every platform.</li>
+</ol>
+</section>
+<section id="what-gets-committed" class="level2">
+<h2 class="anchored" data-anchor-id="what-gets-committed">What gets committed</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Commit it?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>fish546.Rproj</code></td>
+<td>Yes. It’s a small settings file, and every platform should have it.</td>
+</tr>
+<tr class="even">
+<td><code>.Rproj.user/</code></td>
+<td>No.&nbsp;RStudio’s per-machine scratch folder. Your <code>.gitignore</code> already skips it.</td>
+</tr>
+<tr class="odd">
+<td><code>.Rhistory</code>, <code>.RData</code></td>
+<td>No.&nbsp;Also already ignored.</td>
 </tr>
 </tbody>
 </table>
@@ -365,31 +477,13 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+<span class="screen-reader-only">Tip</span>Don’t save your workspace
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Raven is home. Your laptop is for editing and Git. Hyak is for when Raven is not enough. Hyak is the hardest of the three; give yourself time and don’t panic when something breaks.</p>
+<p>When RStudio asks <strong>“Save workspace image to ~/.RData?”</strong> on exit, choose <strong>Don’t Save</strong>. To stop the question for good: <strong>Tools → Global Options → General</strong>, uncheck <strong>Restore .RData into workspace at startup</strong>, and set <strong>Save workspace to .RData on exit</strong> to <strong>Never</strong>. Your analysis should rebuild from code, not from a saved session.</p>
 </div>
 </div>
-<section id="working-in-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="working-in-rstudio">Working in RStudio</h2>
-<p>On every platform, open your repository as an <strong>R Project</strong> (<code>fish546.Rproj</code>) before you start work. It sets the working directory, shows the Git tab, and keeps paths the same on your laptop, Raven, and Klone. See <a href="./r-projects.html">R Projects in RStudio</a>.</p>
-</section>
-<section id="when-you-finish-a-tutorial" class="level2">
-<h2 class="anchored" data-anchor-id="when-you-finish-a-tutorial">When you finish a tutorial</h2>
-<p>Each tutorial ends with a completion block. Paste it as a <strong>comment on your Project Proposal issue</strong> in the <a href="https://github.com/sr320/course-fish546-2026/issues">course repository</a>. That issue is your home base for the quarter; see <a href="./how-we-work.html">How We Work</a>.</p>
-<p>If you have not opened a Project Proposal issue yet, open one first. A rough draft is fine.</p>
-</section>
-<section id="why-these-three-and-where-they-come-from" class="level2">
-<h2 class="anchored" data-anchor-id="why-these-three-and-where-they-come-from">Why these three, and where they come from</h2>
-<p>Each tutorial maps to the <strong><a href="https://robertslab.github.io/resources/">Roberts Lab Handbook</a></strong>, the reference standard for how you’re expected to work:</p>
-<ul>
-<li><strong>Tutorial 1</strong> → <a href="https://robertslab.github.io/resources/Computing-Best-Practices/">Computing Best Practices</a>, <a href="https://robertslab.github.io/resources/Data-Management/">Data Management</a>, and the handbook’s Git/GitHub and bash tutorials.</li>
-<li><strong>Tutorial 2</strong> → the handbook’s Raven (RStudio Server, Conda) guides.</li>
-<li><strong>Tutorial 3</strong> → UW’s <a href="https://hyak.uw.edu/docs/guides/ood/getting-started">Hyak OnDemand</a> guides and the handbook’s Klone guides (containers, file transfers, storage).</li>
-</ul>
-<p>Keep the handbook open in a tab while you work — it’s where you’ll return all quarter.</p>
 
 
 </section>

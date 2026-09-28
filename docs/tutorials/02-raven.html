@@ -80,9 +80,14 @@
         <pre><span class="p">git config --global user.name  "Your Name"</span>
 <span class="p">git config --global user.email "you@uw.edu"</span></pre>
       </div>
+      <div class="card">
+        <h4>Open it as an R Project</h4>
+        <p>Your repository includes a file called <code>fish546.Rproj</code>. In RStudio choose <strong>File → Open Project…</strong>, browse to <code>~/GitHub/your-repo</code>, select <code>fish546.Rproj</code>, and click <strong>Open</strong>. The top-right corner of RStudio now shows <code>fish546</code>, the Files pane shows your repository, and a <strong>Git</strong> tab appears. Open the project this way every time you start work. The <a href="../r-projects.html">R Projects guide</a> explains what it does and why.</p>
+      </div>
       <div class="note">Now the <em>same</em> project exists in three places by the end of the setup: your laptop, Raven, and GitHub. GitHub is the source of truth; you <code>git pull</code> to sync a machine before working and <code>git push</code> when done.</div>
       <div class="check" data-check>
         <label><input type="checkbox"> I cloned my course repo onto Raven and set my Git name/email</label>
+        <label><input type="checkbox"> I opened <code>fish546.Rproj</code> and see <code>fish546</code> in the top-right corner of RStudio</label>
       </div>
     </section>
 
@@ -110,9 +115,8 @@
       <h2 class="sec">Run something and push the result</h2>
       <p class="lede">Prove the round trip: compute on Raven, write to <code>output/</code>, commit, push, and see it on GitHub.</p>
       <div class="card">
-        <p>In the RStudio <strong>Console</strong>, run a tiny analysis that writes a figure to your repo's <code>output/</code> directory:</p>
-        <pre><span class="p">setwd("~/GitHub/your-repo")</span>
-<span class="p">dir.create("output", showWarnings = FALSE)</span>
+        <p>With your project open, run a tiny analysis in the RStudio <strong>Console</strong> that writes a figure to your repo's <code>output/</code> directory. No <code>setwd()</code> needed: the project already put you at the top of your repository.</p>
+        <pre><span class="p">dir.create("output", showWarnings = FALSE)</span>
 <span class="p">png("output/hello-raven.png", width = 700, height = 450)</span>
 <span class="p">hist(rnorm(1000), col = "#0b7285",</span>
 <span class="p">     main = "Hello from Raven", xlab = "value")</span>
