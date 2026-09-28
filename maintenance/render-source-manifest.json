@@ -15,7 +15,7 @@
     "assignments/09-synthesis.qmd": "6b453f418771fde078b109c32459ee5bb5e33e256ff67cb558530474d9ede120",
     "assignments/10-compendium.qmd": "6516084786a069eef7e45c2862eb9ee0bc26bcc0d966f62c4c1a9de341606e38",
     "how-we-work.qmd": "24a4ff0e1f4b6b3af10a33c6930d92a4d13eff8ef4a2b5c3f9a83963b92be9a0",
-    "index.qmd": "f538e071784be30b49f18847caa443959b0d949e5ec9a787b353ddb9655daa2f",
+    "index.qmd": "e0c9f80b8b0848a72b773eed039fd06964b1283fb0fa2392a650c12f5725253b",
     "lectures/00-before.qmd": "f1bb90e63c0a75687983609161c49dbd8d1f1fce1a2d8ef335ae17b19382d815",
     "lectures/01-start-up.qmd": "ad37e3a73c03302e00503c2c9bd6405fddea500b8e102f3ca710850548ff9df0",
     "lectures/02-raw-reads-qc.qmd": "77b3d5658dbb924feb18ccac13319eca35aafff0ab3d92024366578771a82a93",
@@ -28,11 +28,11 @@
     "lectures/09-synthesis.qmd": "cdff3d6d57f4e0f1bc581b4de089644abe394ac32f173c1a04920e1b64a2eac1",
     "lectures/10-lastmile.qmd": "0dab80e4a2bfecd18311e27aeea4b1d6b9d9934bbed5c77903f325b280c1ca94",
     "schedule.qmd": "8021943c4e8bbdbff4ae4431930e758d8a2349f0b6b9b3ece64051e0167070bb",
-    "setup.qmd": "daf8b0df602db5ecf6346f257c0465475da10a17cbdab4db06d8cb223bf96aed",
+    "setup.qmd": "d4a2ae908c5e22323f5d483347599f82d2f3197a7364b1e0700c44d1566e68bc",
     "styles.css": "a4359a1714facccdb5f0ff83ebc5a8097438d06ea6047ef9b22b959a51fc3211",
     "tutorials/01-your-computer.html": "dfbe7a9b959c0244548798c1c6ef4ea2ff79b2b83d919bd110f1756953750c9f",
     "tutorials/02-raven.html": "8e804d3f23771491c8ea2e613474f030e6d6e14d561e84f33d932ab088d8a4c3",
-    "tutorials/03-hyak.html": "77e3836836c476c0fa768b3669af1dd0ea3b6d906e6464fe8cb9898acfc38802",
+    "tutorials/03-hyak.html": "c28fa0a4b65ce794d6a6efd4c0e07c28d8107df66730a69b52165a369fa672e4",
     "tutorials/progress.js": "2488e693b235fa6f0784d8ffec5af5f75f566d15612586515f76b7556c78dad5",
     "tutorials/tutorial.css": "f49a1e1a17d5f033271831c69765f7650e73b1325c6c0ed2d4054ff11e275020"
   }

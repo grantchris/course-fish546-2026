@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tutorial 3 · Hyak / Klone: HPC with SLURM &amp; Containers · FISH 546</title>
+<title>Tutorial 3 · Hyak / Klone: RStudio on the Cluster · FISH 546</title>
 <link rel="stylesheet" href="tutorial.css">
 </head>
 <body>
 <div class="wrap">
   <nav class="side">
     <h1>FISH 546 · Setup 3</h1>
-    <div class="sub">Hyak / Klone:<br>HPC, SLURM &amp; Containers</div>
+    <div class="sub">Hyak / Klone:<br>RStudio on the cluster</div>
     <a class="home" href="../setup.html">← Course site · Setup</a>
     <div class="grp">Sections</div>
     <a href="#intro">Overview</a>
     <a href="#model">1 · How a cluster works</a>
-    <a href="#login">2 · SSH in</a>
-    <a href="#storage">3 · Where files go</a>
-    <a href="#transfer">4 · Moving data</a>
-    <a href="#containers">5 · Modules &amp; containers</a>
-    <a href="#slurm">6 · Your first SLURM job</a>
-    <a href="#monitor">7 · Watch &amp; read output</a>
+    <a href="#login">2 · Log in to OnDemand</a>
+    <a href="#rstudio">3 · Launch RStudio on Klone</a>
+    <a href="#storage">4 · Where files go</a>
+    <a href="#transfer">5 · Moving data</a>
+    <a href="#tools">6 · Your tools are already there</a>
+    <a href="#session">7 · Your session is a SLURM job</a>
     <a href="#unstuck">8 · Getting unstuck</a>
     <a href="#done">✔ Completion</a>
     <div class="prog-wrap">
@@ -32,164 +32,148 @@
   <main>
     <section class="hero" id="intro">
       <div class="kick">Week 3 · Tutorial 3 of 3 · The steepest climb</div>
-      <h2>Hyak / Klone: HPC with SLURM &amp; Containers</h2>
-      <p class="lead">Hyak (the <strong>Klone</strong> cluster) is where the heavy compute happens — RNA-seq, eDNA metabarcoding, big alignments. It has the steepest learning curve of the three platforms, so this tutorial goes slow and explains the <em>why</em>. Your only goal today: submit one trivial job and read its output.</p>
-      <div class="pills"><span>~1.5–2 hours</span><span>Klone HPC</span><span>Finish Tutorials 1 &amp; 2 first</span><span>Use Hyak when Raven is not enough</span></div>
+      <h2>Hyak / Klone: RStudio on the Cluster</h2>
+      <p class="lead">Hyak (the <strong>Klone</strong> cluster) is where the heavy compute happens — RNA-seq, eDNA metabarcoding, big alignments. You'll reach it entirely from your web browser through <strong>Hyak OnDemand</strong>, and work in the same RStudio you already know from Raven. Your goal today: start RStudio on a Klone compute node with the lab's software container and run one bioinformatics tool.</p>
+      <div class="pills"><span>~1 hour</span><span>Klone HPC</span><span>Finish Tutorials 1 &amp; 2 first</span><span>Use Hyak when Raven is not enough</span></div>
     </section>
 
     <section id="model">
       <div class="eyebrow">Step 1</div>
-      <h2 class="sec">How a cluster works (read this before touching anything)</h2>
-      <p class="lede">A cluster is not one big computer you log into and run things on. Understanding this one distinction prevents the most common beginner mistake.</p>
+      <h2 class="sec">How a cluster works (read this first)</h2>
+      <p class="lede">A cluster is not one big computer. It is thousands of computers shared by everyone at UW, and you borrow a slice of one for a limited time.</p>
       <div class="card">
-        <h4>Login node vs. compute nodes</h4>
         <ul>
-          <li>When you <code>ssh</code> in, you land on a <strong>login node</strong>. It's shared by everyone and is only for light tasks: editing files, moving data, submitting jobs.</li>
-          <li>The real work runs on <strong>compute nodes</strong>, which you never touch directly. You ask the <strong>scheduler</strong> for them.</li>
-          <li><strong>Never run analysis on the login node.</strong> It slows the cluster for everyone and admins will notice. This is the #1 rule.</li>
+          <li>The machines that do the work are <strong>compute nodes</strong>. You ask for one by saying how many CPUs, how much memory, and how many hours you need.</li>
+          <li>A program called the <strong>scheduler</strong> (SLURM) takes your request, waits until a node is free, and gives it to you. When your time runs out, the node goes back to the pool and anything still running stops.</li>
+          <li>Your request is charged to an <strong>account</strong> (the lab's is <code>srlab</code>) and runs in a <strong>partition</strong>, a group of nodes. This course uses <code>ckpt</code>, the pool of idle nodes anyone can borrow.</li>
         </ul>
-        <h4>The scheduler (SLURM)</h4>
-        <p>You write a small script describing what you want (how many CPUs, how much memory, how long, which account) and hand it to <strong>SLURM</strong> with <code>sbatch</code>. SLURM finds a compute node, runs your job there, and writes the output to a file. You wait, then read the file.</p>
-        <div class="note"><strong>Mental model:</strong> the login node is the front desk; SLURM is the host who seats you; the compute node is your table. You order at the desk, but you don't cook in the lobby.</div>
+        <div class="note"><strong>Mental model:</strong> SLURM is the host at a busy restaurant. You say "table for two, for an hour," wait to be seated, and when your hour is up the table goes to the next party.</div>
       </div>
-      <div class="tip"><strong>Handbook:</strong> Keep <a href="https://robertslab.github.io/resources/klone_quick-start/">Klone quick-start</a> and <a href="https://robertslab.github.io/resources/klone_Running-a-Job/">Running a job on Klone</a> open the whole time.</div>
       <div class="check" data-check>
-        <label><input type="checkbox"> I understand the difference between the login node and compute nodes, and that I never compute on the login node</label>
+        <label><input type="checkbox"> I understand that I request a compute node for a set time, and it goes away when that time ends</label>
       </div>
     </section>
 
     <section id="login">
       <div class="eyebrow">Step 2</div>
-      <h2 class="sec">SSH into Klone</h2>
+      <h2 class="sec">Log in to Hyak OnDemand</h2>
       <div class="card">
-        <p>From your laptop's terminal (or Raven's), connect with your UW NetID:</p>
-        <pre><span class="p">ssh &lt;UWNetID&gt;@klone.hyak.uw.edu</span></pre>
-        <p>You'll enter your UW password and approve a <strong>Duo</strong> two-factor prompt. On success you land on a login node:</p>
-        <pre><span class="o">[your-netid@klone-login01 ~]$</span></pre>
-        <div class="warn"><strong>First-time access:</strong> you must be added to the lab's Hyak allocation (the <code>srlab</code> account) before jobs will run. If <code>ssh</code> is refused or you have no allocation, open a <strong>Help Request</strong> issue with the platform set to <em>Hyak</em> — this is expected and easy to fix.</div>
-        <p>Prefer a GUI? <a href="https://ondemand.hyak.uw.edu">Hyak On-Demand</a> gives you a browser dashboard (including RStudio on Klone) — a gentler on-ramp covered in the handbook's <a href="https://robertslab.github.io/resources/klone_RStudio-Server/">Klone RStudio</a> guide.</p>
+        <ol>
+          <li><strong>Off campus?</strong> Connect to the UW VPN (<a href="https://itconnect.uw.edu/tools-services-support/networks-connectivity/husky-onnet/installing-configuring-and-using-husky-onnet/">Husky OnNet</a>) first. OnDemand does not load from off-campus networks without it.</li>
+          <li>Open <a href="https://ondemand.hyak.uw.edu/">ondemand.hyak.uw.edu</a> in your browser.</li>
+          <li>Sign in with your UW NetID and password, and approve the <strong>Duo</strong> prompt.</li>
+        </ol>
+        <p>You land on the OnDemand dashboard. Everything in this tutorial happens from here; you don't need a terminal on your laptop.</p>
+        <div class="warn"><strong>First-time access:</strong> you must be added to the lab's Hyak allocation (the <code>srlab</code> account) before you can log in or launch anything. If OnDemand refuses you, or <code>srlab</code> isn't offered as an account in Step 3, open a <strong>Help Request</strong> issue with the platform set to <em>Hyak</em>. This is expected and easy to fix.</div>
       </div>
+      <div class="tip"><strong>Reference:</strong> UW's <a href="https://hyak.uw.edu/docs/guides/ood/getting-started">Open OnDemand getting-started guide</a>.</div>
       <div class="check" data-check>
-        <label><input type="checkbox"> I SSH'd into Klone and reached a login-node prompt (or opened Hyak On-Demand)</label>
+        <label><input type="checkbox"> I logged in to Hyak OnDemand and can see the dashboard</label>
+      </div>
+    </section>
+
+    <section id="rstudio">
+      <div class="eyebrow">Step 3 · the main event</div>
+      <h2 class="sec">Launch RStudio on Klone with the lab container</h2>
+      <p class="lede">The lab keeps all its bioinformatics software in one <strong>container</strong>: a single file holding a complete, fixed software stack (R, RStudio, BLAST, aligners, and more). You'll tell OnDemand to start RStudio from that file.</p>
+      <div class="card">
+        <ol>
+          <li>On the dashboard, open the <strong>Interactive Apps</strong> menu at the top of the page and choose <strong>RStudio</strong>.</li>
+          <li>Fill in the form:
+            <table>
+              <tr><th>Field</th><th>Set it to</th></tr>
+              <tr><td>Account</td><td><code>srlab</code></td></tr>
+              <tr><td>Partition</td><td><code>ckpt</code></td></tr>
+              <tr><td>CPUs / memory / hours</td><td>Start small: 2 CPUs, 8 GB, 2 hours. Ask for more only when a real analysis needs it.</td></tr>
+              <tr><td>RStudio container</td><td>Choose <strong>Custom</strong>, then paste this path exactly:<br><code>/gscratch/srlab/containers/srlab-bioinformatics-container-2bd5d44.sif</code></td></tr>
+            </table>
+          </li>
+          <li>Click <strong>Launch</strong>. Your request appears under <strong>My Interactive Sessions</strong> as <em>Queued</em>, then <em>Running</em>. Waiting a few minutes is normal.</li>
+          <li>When it's running, click <strong>Connect to RStudio Server</strong>. RStudio opens in a new tab, running on a Klone compute node.</li>
+        </ol>
+      </div>
+      <div class="note"><strong>When you're done working:</strong> go back to <strong>My Interactive Sessions</strong> and click <strong>Delete</strong> on the session. That hands the node back instead of holding it until the time runs out.</div>
+      <div class="tip"><strong>Reference:</strong> UW's <a href="https://hyak.uw.edu/docs/guides/ood/apps/rstudio">RStudio on OnDemand</a> guide shows the form and the Connect button with screenshots.</div>
+      <div class="check" data-check>
+        <label><input type="checkbox"> I launched RStudio with the lab container and connected to it</label>
       </div>
     </section>
 
     <section id="storage">
-      <div class="eyebrow">Step 3</div>
+      <div class="eyebrow">Step 4</div>
       <h2 class="sec">Where files go on Klone</h2>
       <p class="lede">Klone has several storage areas with very different rules. Put things in the wrong place and they get purged or you run out of space.</p>
       <div class="card">
         <table>
           <tr><th>Location</th><th>Use for</th><th>Note</th></tr>
-          <tr><td><code>/mmfs1/home/&lt;netid&gt;</code></td><td>small config, scripts</td><td>small quota — not for data</td></tr>
+          <tr><td><code>/mmfs1/home/&lt;netid&gt;</code></td><td>small config files</td><td>10 GB limit — not for data. RStudio starts here.</td></tr>
           <tr><td><code>/gscratch/srlab/</code></td><td>lab data &amp; analyses</td><td>the lab's shared working space</td></tr>
           <tr><td><code>/gscratch/scrubbed/</code></td><td>large temporary work</td><td>auto-deleted after a set time — never permanent</td></tr>
         </table>
-        <p>Make yourself a working directory in the lab space:</p>
-        <pre><span class="p">cd /gscratch/srlab/</span>
-<span class="p">mkdir -p &lt;netid&gt;/fish546-setup</span>
-<span class="p">cd &lt;netid&gt;/fish546-setup</span></pre>
+        <p>In RStudio, click the <strong>Terminal</strong> tab (next to Console) and make yourself a working directory in the lab space, plus a shortcut to it from your home directory so it's easy to find in the Files pane:</p>
+        <pre><span class="p">mkdir -p /gscratch/srlab/$USER/fish546</span>
+<span class="p">ln -s /gscratch/srlab/$USER/fish546 ~/fish546</span></pre>
+        <p>A <code>fish546</code> folder now appears in RStudio's <strong>Files</strong> pane. Keep your Klone work in there.</p>
       </div>
       <div class="tip"><strong>Handbook:</strong> <a href="https://robertslab.github.io/resources/klone_Data-Storage-and-System-Organization/">Data Storage &amp; System Organization</a> is the authority on what lives where.</div>
       <div class="check" data-check>
-        <label><input type="checkbox"> I made a working directory under <code>/gscratch/srlab/&lt;netid&gt;/</code></label>
+        <label><input type="checkbox"> I made <code>/gscratch/srlab/&lt;netid&gt;/fish546</code> and can see it in the Files pane</label>
       </div>
     </section>
 
     <section id="transfer">
-      <div class="eyebrow">Step 4</div>
+      <div class="eyebrow">Step 5</div>
       <h2 class="sec">Moving data on and off</h2>
       <div class="card">
-        <p>Small files — run this <strong>from your laptop</strong> (not from Klone):</p>
-        <pre><span class="c"># copy a local file up to Klone</span>
-<span class="p">scp myfile.txt &lt;netid&gt;@klone.hyak.uw.edu:/gscratch/srlab/&lt;netid&gt;/fish546-setup/</span>
-
-<span class="c"># sync a whole directory (resumable, skips unchanged files)</span>
-<span class="p">rsync -avP mydir/ &lt;netid&gt;@klone.hyak.uw.edu:/gscratch/srlab/&lt;netid&gt;/mydir/</span></pre>
-        <p>Large datasets: use <strong>Globus</strong> (a managed transfer service) rather than <code>scp</code> — it's faster and recovers from interruptions.</p>
+        <ul>
+          <li><strong>Small files (under a few hundred MB):</strong> on the OnDemand dashboard, open <strong>Files</strong>, go to <code>/gscratch/srlab/&lt;netid&gt;/fish546</code>, and use <strong>Upload</strong> or <strong>Download</strong>. Inside RStudio, the Files pane's <strong>Upload</strong> and <strong>More → Export</strong> buttons do the same thing.</li>
+          <li><strong>Code:</strong> use Git. Clone your course repository into <code>~/fish546</code> from the RStudio Terminal, exactly as you did on Raven, and push and pull to move work between platforms.</li>
+          <li><strong>Large datasets:</strong> use <strong>Globus</strong>, a managed transfer service that is faster and recovers from interruptions. Course datasets are already on Klone; see the pinned <a href="https://github.com/sr320/course-fish546-2026/issues/1">Provided datasets issue</a>.</li>
+        </ul>
       </div>
-      <div class="tip"><strong>Handbook:</strong> <a href="https://robertslab.github.io/resources/klone_File-Transfers/">File Transfers</a> covers <code>scp</code>, <code>rsync</code>, and Globus in detail.</div>
+      <div class="tip"><strong>Handbook:</strong> <a href="https://robertslab.github.io/resources/klone_File-Transfers/">File Transfers</a> covers Globus in detail.</div>
       <div class="check" data-check>
-        <label><input type="checkbox"> I know how to move files with <code>scp</code>/<code>rsync</code> and when to use Globus instead</label>
+        <label><input type="checkbox"> I know how to move small files through OnDemand, code through Git, and when to use Globus instead</label>
       </div>
     </section>
 
-    <section id="containers">
-      <div class="eyebrow">Step 5</div>
-      <h2 class="sec">Software: modules &amp; containers</h2>
-      <p class="lede">You don't install bioinformatics tools system-wide on Klone. The lab runs them from <strong>Apptainer containers</strong> — a single file holding a whole reproducible software stack.</p>
+    <section id="tools">
+      <div class="eyebrow">Step 6</div>
+      <h2 class="sec">Your tools are already there</h2>
+      <p class="lede">Because RStudio is running inside the lab container, every tool in it is available with no installing and no setup.</p>
       <div class="card">
-        <p>Load the container runtime with a module:</p>
-        <pre><span class="p">module load apptainer</span></pre>
-        <p>Then run a command <em>inside</em> the lab container. The container file lives in <code>/gscratch/srlab/containers/</code>:</p>
-        <pre><span class="p">apptainer exec \</span>
-<span class="p">  --home $PWD \</span>
-<span class="p">  --bind /mmfs1/home/ \</span>
-<span class="p">  --bind /gscratch/ \</span>
-<span class="p">  /gscratch/srlab/containers/srlab-bioinformatics-container-&lt;hash&gt;.sif \</span>
-<span class="p">  blastn -version</span></pre>
-        <p>The <code>--bind</code> flags make cluster storage visible inside the container. You'll reuse this exact pattern for every real tool this quarter.</p>
+        <p>In the RStudio <strong>Terminal</strong>:</p>
+        <pre><span class="p">blastn -version</span>
+<span class="o">blastn: 2.x.x+</span></pre>
+        <p>Any bioinformatics program you use this quarter runs the same way: type it in the Terminal, or call it from a <code>bash</code> chunk in your notebook. Name the container file in your notebook's software statement; that file name pins the exact versions you used.</p>
       </div>
-      <div class="tip"><strong>Handbook:</strong> <a href="https://robertslab.github.io/resources/klone_containers/">Using containers on Klone</a> explains Apptainer, the current container hash, and binding.</div>
+      <div class="tip"><strong>Handbook:</strong> <a href="https://robertslab.github.io/resources/klone_containers/">Using containers on Klone</a> explains what's in the lab container and how it's built.</div>
       <div class="check" data-check>
-        <label><input type="checkbox"> I ran <code>module load apptainer</code> and understand what a container gives me</label>
+        <label><input type="checkbox"> I ran <code>blastn -version</code> in the RStudio Terminal and got a version number</label>
       </div>
     </section>
 
-    <section id="slurm">
-      <div class="eyebrow">Step 6 · the main event</div>
-      <h2 class="sec">Your first SLURM job</h2>
-      <p class="lede">A SLURM job is a plain text script: a <strong>header</strong> of <code>#SBATCH</code> lines telling the scheduler what you need, then the commands to run. Create this file with <code>nano</code> in your working directory.</p>
-      <div class="card">
-        <p>Create <code>hello-slurm.sh</code>:</p>
-        <pre><span class="c">#!/bin/bash</span>
-<span class="c">## --- SLURM header: what to ask the scheduler for ---</span>
-<span class="p">#SBATCH --job-name=hello-546</span>
-<span class="p">#SBATCH --account=srlab</span>
-<span class="p">#SBATCH --partition=ckpt</span>
-<span class="p">#SBATCH --nodes=1</span>
-<span class="p">#SBATCH --ntasks=1</span>
-<span class="p">#SBATCH --time=00:05:00</span>
-<span class="p">#SBATCH --mem=1G</span>
-<span class="p">#SBATCH --output=slurm-%j.out</span>
-
-<span class="c">## --- the actual work ---</span>
-<span class="p">echo "Hello from Klone!"</span>
-<span class="p">echo "Running on host: $(hostname)"</span>
-<span class="p">echo "Date: $(date)"</span>
-<span class="p">sleep 20</span>
-<span class="p">echo "Job finished."</span></pre>
-        <p>Submit it to the scheduler:</p>
-        <pre><span class="p">sbatch hello-slurm.sh</span>
-<span class="o">Submitted batch job 1234567</span></pre>
-        <p>That number is your <strong>job ID</strong> — you'll need it below.</p>
-      </div>
-      <div class="warn"><strong>The header matters:</strong> <code>--account</code> and <code>--partition</code> must match an allocation you belong to (the lab uses <code>srlab</code>). Ask too much <code>--time</code> or <code>--mem</code> and you wait longer in the queue; ask too little and the job is killed mid-run. Start small.</div>
-      <div class="check" data-check>
-        <label><input type="checkbox"> I wrote a SLURM script with a header and a command block</label>
-        <label><input type="checkbox"> I submitted it with <code>sbatch</code> and got a job ID</label>
-      </div>
-    </section>
-
-    <section id="monitor">
+    <section id="session">
       <div class="eyebrow">Step 7</div>
-      <h2 class="sec">Watch it, then read the output</h2>
+      <h2 class="sec">Your session is a SLURM job</h2>
+      <p class="lede">The form you filled in during Step 3 <em>was</em> a request to the scheduler. OnDemand wrote the SLURM request for you.</p>
       <div class="card">
-        <p>Check the queue for your job (it may be <code>PD</code> pending, then <code>R</code> running):</p>
-        <pre><span class="p">squeue -u $USER</span></pre>
-        <p>Need to cancel one? Use the job ID:</p>
-        <pre><span class="p">scancel 1234567</span></pre>
-        <p>When it's gone from the queue, it finished. SLURM wrote everything your script printed to <code>slurm-&lt;jobid&gt;.out</code>. Read it:</p>
-        <pre><span class="p">cat slurm-1234567.out</span>
-<span class="o">Hello from Klone!</span>
-<span class="o">Running on host: n3148</span>
-<span class="o">Date: ...</span>
-<span class="o">Job finished.</span></pre>
-        <p>That output file — and the fact it ran on a compute node (<code>n3148</code>), not the login node — is proof your job worked.</p>
+        <p>Prove it. In the RStudio Terminal:</p>
+        <pre><span class="p">echo $SLURM_JOB_ID</span>
+<span class="o">1234567</span>
+<span class="p">hostname</span>
+<span class="o">n3148</span></pre>
+        <p>The first number is your <strong>job ID</strong>; the second is the <strong>compute node</strong> you were given. You'll need both for the completion block.</p>
+        <table>
+          <tr><th>Form field</th><th>What SLURM hears</th></tr>
+          <tr><td>Account <code>srlab</code></td><td>who pays for the time</td></tr>
+          <tr><td>Partition <code>ckpt</code></td><td>which pool of nodes to use</td></tr>
+          <tr><td>CPUs, memory, hours</td><td>the size and length of your slice</td></tr>
+        </table>
       </div>
+      <div class="warn"><strong>Sizing matters:</strong> ask for too much memory or time and you wait longer in the queue; ask for too little and your session is stopped mid-analysis when it runs out. Start small and increase only when you have a reason. On <code>ckpt</code>, a session can occasionally be stopped early if the node's owner needs it back, so save and commit your work often.</div>
       <div class="check" data-check>
-        <label><input type="checkbox"> I watched my job with <code>squeue</code> and it completed</label>
-        <label><input type="checkbox"> I read <code>slurm-&lt;jobid&gt;.out</code> and saw my "Hello from Klone!" output</label>
+        <label><input type="checkbox"> I found my job ID and compute node name</label>
       </div>
     </section>
 
@@ -200,35 +184,34 @@
       <div class="card">
         <table>
           <tr><th>Symptom</th><th>Likely cause / fix</th></tr>
-          <tr><td>Job stuck in <code>PD</code> (pending) a long time</td><td>Cluster is busy, or you asked for a lot of resources. Reduce <code>--mem</code>/<code>--time</code>, or wait.</td></tr>
-          <tr><td>Job vanishes instantly, tiny <code>.out</code></td><td>Header error — wrong <code>--account</code>/<code>--partition</code>, or a typo. Read the top of the <code>.out</code> file.</td></tr>
-          <tr><td><code>command not found</code></td><td>You're not inside the container. Wrap the command in <code>apptainer exec ... </code> (Step 5).</td></tr>
-          <tr><td>Killed with an out-of-memory message</td><td>Raise <code>--mem</code> and resubmit.</td></tr>
-          <tr><td>Permission denied on your script</td><td>Make it executable: <code>chmod +x yourscript.sh</code>.</td></tr>
+          <tr><td>OnDemand won't load</td><td>You're off campus without the VPN. Connect to Husky OnNet and reload.</td></tr>
+          <tr><td>Session stays <em>Queued</em> a long time</td><td>The cluster is busy, or you asked for a lot. Delete it and relaunch with fewer CPUs, less memory, or fewer hours.</td></tr>
+          <tr><td>Session goes straight to <em>Completed</em></td><td>A form problem, usually the account, partition, or container path. Check the path character by character and relaunch.</td></tr>
+          <tr><td>RStudio suddenly disconnects</td><td>Your hours ran out, or a <code>ckpt</code> node was reclaimed. Launch a new session; your files in <code>/gscratch</code> are still there.</td></tr>
+          <tr><td><code>command not found</code></td><td>You picked a standard RStudio container instead of <strong>Custom</strong> with the lab path. Relaunch with the lab container (Step 3).</td></tr>
+          <tr><td>Home directory full</td><td>Data or R packages landed in <code>~</code>. Move them to <code>~/fish546</code> (which lives in <code>/gscratch</code>).</td></tr>
         </table>
       </div>
-      <div class="tip"><strong>Asking for help the right way</strong> gets you unstuck fastest. Open a <strong>Help Request</strong> issue on the <a href="https://github.com/sr320/course-fish546-2026/issues/new/choose">course repository</a> (platform = Hyak) with: what you were trying to do, the exact command, the full error text, and your job ID. This is the same skill you'll use all quarter — vague "it doesn't work" gets slow answers; a precise report gets fast ones.</div>
+      <div class="tip"><strong>Asking for help the right way</strong> gets you unstuck fastest. Open a <strong>Help Request</strong> issue on the <a href="https://github.com/sr320/course-fish546-2026/issues/new/choose">course repository</a> (platform = Hyak) with: what you were trying to do, the form values you used, the exact command, the full error text, and your job ID. Vague "it doesn't work" gets slow answers; a precise report gets fast ones.</div>
       <div class="check" data-check>
-        <label><input type="checkbox"> I know where to look when a job fails, and how to file a good Help Request issue</label>
+        <label><input type="checkbox"> I know what to check when a session fails, and how to file a good Help Request issue</label>
       </div>
     </section>
 
     <section id="done">
       <div class="eyebrow">Finish</div>
       <h2 class="sec">✔ Completion <span class="tag">Tutorial 3</span></h2>
-      <p class="lede">You submitted a real job to a supercomputer and read its output — the hardest setup milestone in the course. Paste this as a comment on your <strong>Project Proposal</strong> issue on the <a href="https://github.com/sr320/course-fish546-2026/issues">course repository</a> (fill in the blanks).</p>
+      <p class="lede">You ran software on a supercomputer node — the hardest setup milestone in the course. Paste this as a comment on your <strong>Project Proposal</strong> issue on the <a href="https://github.com/sr320/course-fish546-2026/issues">course repository</a> (fill in the blanks), then delete your session in OnDemand.</p>
       <div class="done-block">## Tutorial 3 — Hyak / Klone ✅
-SLURM job ID: &lt;paste your job number&gt;
-Ran on compute node: &lt;the hostname from your .out&gt;
-Tail of slurm-*.out:
-  Hello from Klone!
-  ...
-  Job finished.</div>
+SLURM job ID: &lt;output of echo $SLURM_JOB_ID&gt;
+Compute node: &lt;output of hostname&gt;
+blastn -version: &lt;paste the first line&gt;
+Working directory: /gscratch/srlab/&lt;netid&gt;/fish546</div>
       <div class="note">That completes all three platforms. From here on: your laptop for editing and Git, Raven for most weekly work, Hyak when Raven is not enough. Back to the <a href="../schedule.html">schedule</a>.</div>
     </section>
   </main>
 </div>
-<script>window.TUTORIAL_KEY = "fish546-t3-hyak";</script>
+<script>window.TUTORIAL_KEY = "fish546-t3-hyak-ood";</script>
 <script src="progress.js"></script>
 </body>
 </html>

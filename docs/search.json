@@ -18,7 +18,7 @@
     "href": "setup.html#why-these-three-and-where-they-come-from",
     "title": "Setup",
     "section": "Why these three, and where they come from",
-    "text": "Why these three, and where they come from\nEach tutorial maps to the Roberts Lab Handbook, the reference standard for how you’re expected to work:\n\nTutorial 1 → Computing Best Practices, Data Management, and the handbook’s Git/GitHub and bash tutorials.\nTutorial 2 → the handbook’s Raven (RStudio Server, Conda) guides.\nTutorial 3 → the handbook’s Klone guides (logging in, running a job, containers, file transfers, storage).\n\nKeep the handbook open in a tab while you work — it’s where you’ll return all quarter."
+    "text": "Why these three, and where they come from\nEach tutorial maps to the Roberts Lab Handbook, the reference standard for how you’re expected to work:\n\nTutorial 1 → Computing Best Practices, Data Management, and the handbook’s Git/GitHub and bash tutorials.\nTutorial 2 → the handbook’s Raven (RStudio Server, Conda) guides.\nTutorial 3 → UW’s Hyak OnDemand guides and the handbook’s Klone guides (containers, file transfers, storage).\n\nKeep the handbook open in a tab while you work — it’s where you’ll return all quarter."
   },
   {
     "objectID": "lectures/10-lastmile.html",
@@ -1495,7 +1495,7 @@
     "href": "index.html#platforms",
     "title": "Bioinformatics for Environmental Sciences",
     "section": "Platforms",
-    "text": "Platforms\nYou will work across three computing tiers. They come online in stages; each has a setup tutorial.\n\n\n\nTier\nPlatform\nRole\nWhen\n\n\n\n\nYour computer\nLocal shell + Git/GitHub\nEditing, version control\nBefore Week 1\n\n\nRaven\nRStudio Server at http://raven.fish.washington.edu:8787\nHome for most weekly work\nWeek 1\n\n\nHyak / Klone\nHPC (SLURM + containers): ssh &lt;UWNetID&gt;@klone.hyak.uw.edu · On-Demand\nWhen Raven is not enough\nWeek 3\n\n\n\nCourse GitHub Organization: https://github.com/course-fish546-2026"
+    "text": "Platforms\nYou will work across three computing tiers. They come online in stages; each has a setup tutorial.\n\n\n\nTier\nPlatform\nRole\nWhen\n\n\n\n\nYour computer\nLocal shell + Git/GitHub\nEditing, version control\nBefore Week 1\n\n\nRaven\nRStudio Server at http://raven.fish.washington.edu:8787\nHome for most weekly work\nWeek 1\n\n\nHyak / Klone\nHPC, in your browser: RStudio through Hyak OnDemand (UW VPN off campus)\nWhen Raven is not enough\nWeek 3\n\n\n\nCourse GitHub Organization: https://github.com/course-fish546-2026"
   },
   {
     "objectID": "index.html#textbook-optional",
