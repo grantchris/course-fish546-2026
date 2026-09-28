@@ -3,7 +3,7 @@
   "sources": {
     "_quarto.yml": "c2d44d2c229b9813f4a889ac760b96dd49a598fa8ab33e32523a9a18399f044d",
     "about.qmd": "0fecd8d92260d6eaf2d0d9cf4119155b2950cb5cd1644bf0621ddf5b5decf735",
-    "assignments/00-bash.qmd": "4277687d531654ab136e662c863c6786a8e95a1bfa61a1c31c3945a5f5e182ca",
+    "assignments/00-bash.qmd": "c9d5309ef36e186d8f751cda48befb04af59eeda1f88b171939cb06b4c9bd1d4",
     "assignments/01-blast.qmd": "a6386e6a73afb3f9660479020c6368815d02da97654c7421ca4225962232671b",
     "assignments/02-fastq-qc.qmd": "b6032783b62cb9cd12b9dd0bd34cbaf5b5c146543ec549382faf6a9e068453b9",
     "assignments/03-mapping-quantification.qmd": "7a0bd7a64b7931ea2a652ca5ed054896a18a8e16e4cb3d94afd925500524cb67",
@@ -31,7 +31,7 @@
     "schedule.qmd": "8021943c4e8bbdbff4ae4431930e758d8a2349f0b6b9b3ece64051e0167070bb",
     "setup.qmd": "6b907bffbe83f7bff7765840cbd61c669b6b93e8bc7e1d87e14e4cff4a12afca",
     "styles.css": "a4359a1714facccdb5f0ff83ebc5a8097438d06ea6047ef9b22b959a51fc3211",
-    "tutorials/01-your-computer.html": "535c435349dbce10bb20082f50a0326d3ec6dea7443265bc98f42851ae72c3f1",
+    "tutorials/01-your-computer.html": "5476abd759d2b5d9b49aba54c3b2773619ea46f6fcf282535975c4e06311f7b8",
     "tutorials/02-raven.html": "28aced5a7fdf41e1ec470adc5689172c7b107d28ca9ca623fe9fabd2ab52d865",
     "tutorials/03-hyak.html": "c10df2d6f6cea91737fe0b75ced8f4a3ad515476c95384112adac0e7438ccf42",
     "tutorials/progress.js": "2488e693b235fa6f0784d8ffec5af5f75f566d15612586515f76b7556c78dad5",

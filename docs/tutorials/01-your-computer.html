@@ -38,14 +38,24 @@
     <section id="install">
       <div class="eyebrow">Step 1</div>
       <h2 class="sec">Install the tools</h2>
-      <p class="lede">You need three things: a terminal, Git, and a GitHub account (plus the GitHub Desktop app if you prefer clicking to typing).</p>
+      <p class="lede">You need three things: a GitHub account, a terminal, and Git (plus the GitHub Desktop app if you prefer clicking to typing).</p>
 
       <div class="card">
         <h4>GitHub account</h4>
         <p>Create a free account at <a href="https://github.com/join">github.com/join</a> if you don't have one. Use a name you'd be comfortable with a future employer seeing. Then tell the instructor your username so you can be added to the <a href="https://github.com/course-fish546-2026">course organization</a>. GitHub will email you an invitation; <strong>accept it</strong> (or open <a href="https://github.com/orgs/course-fish546-2026/invitation">github.com/orgs/course-fish546-2026/invitation</a>). Until you accept, the course organization won't appear as an owner option in Step 5.</p>
 
-        <h4>Git + GitHub Desktop</h4>
-        <p>Install <a href="https://desktop.github.com/">GitHub Desktop</a> — it bundles Git and gives you a friendly interface for the daily loop. On macOS you already have a terminal (<code>Terminal.app</code>); on Windows, GitHub Desktop installs Git Bash, which you'll use as your terminal.</p>
+        <h4>A terminal and Git</h4>
+        <table>
+          <tr><th>Your system</th><th>Terminal</th><th>Git</th></tr>
+          <tr><td>macOS</td><td><strong>Terminal</strong> (already installed; search "Terminal" in Spotlight)</td><td>Run <code>git --version</code> in Terminal. If Git is missing, macOS offers to install the Command Line Tools; click <strong>Install</strong>.</td></tr>
+          <tr><td>Windows</td><td><strong>Git Bash</strong>, installed with Git</td><td>Install <a href="https://git-scm.com/downloads/win">Git for Windows</a>, accepting the default options. It adds <strong>Git Bash</strong> to your Start menu.</td></tr>
+          <tr><td>Linux</td><td>Your usual terminal</td><td>Install <code>git</code> with your package manager (for example <code>sudo apt install git</code>).</td></tr>
+        </table>
+        <div class="note"><strong>Windows: use Git Bash for every command in this course.</strong> PowerShell and Command Prompt use different commands, so things like <code>ls</code>, <code>find</code>, and <code>~</code> won't behave as shown. GitHub Desktop does <em>not</em> install Git Bash on its own; you need Git for Windows. In Git Bash, your home folder <code>C:\Users\you</code> appears as <code>/c/Users/you</code>, and <code>~</code> means the same place.</div>
+        <div class="tip"><strong>Why Git Bash is enough (you don't need WSL).</strong> On your own computer you only navigate folders, run Git, and do small file tasks, and Git Bash handles all of that. Real analysis runs on Raven and Klone, which are full Linux systems you reach through RStudio in the browser. If you already use Windows Subsystem for Linux (WSL) and prefer it, that's fine too; just keep one copy of your repository and use the same environment for Git every time.</div>
+
+        <h4>GitHub Desktop (optional)</h4>
+        <p><a href="https://desktop.github.com/">GitHub Desktop</a> gives you buttons for the daily commit-and-push loop if you'd rather click than type. It works alongside Git in the terminal; use whichever you like.</p>
 
         <h4>Verify Git works</h4>
         <p>Open your terminal and run:</p>
@@ -57,7 +67,7 @@
 
       <div class="check" data-check>
         <label><input type="checkbox"> I have a GitHub account and gave my username to the instructor</label>
-        <label><input type="checkbox"> GitHub Desktop is installed and <code>git --version</code> prints a version</label>
+        <label><input type="checkbox"> I have a terminal (Terminal on macOS, Git Bash on Windows) and <code>git --version</code> prints a version in it</label>
       </div>
     </section>
 
@@ -96,7 +106,7 @@
         <p>Try it — every path is a real location on disk:</p>
         <pre><span class="p">cd ~/GitHub</span>
 <span class="p">pwd</span>
-<span class="o">/Users/you/GitHub</span>
+<span class="o">/Users/you/GitHub</span>        <span class="c"># macOS; Git Bash on Windows shows /c/Users/you/GitHub</span>
 <span class="p">ls -la</span></pre>
       </div>
       <div class="tip"><strong>Go deeper:</strong> The handbook's <a href="https://robertslab.github.io/resources/bash-tutorial.html">bash tutorial</a> is a full hands-on walkthrough. If the shell is brand new to you, work through it now.</div>

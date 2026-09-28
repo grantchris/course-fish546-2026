@@ -27,7 +27,7 @@ code/        data/raw/  data/processed/   output/   notebooks/   docs/
 3. **Clone it** into `~/GitHub/` on your computer (Tutorial 1).
 4. **Edit each `README.md`** inside `code/`, `data/`, and `output/` so it says, in one or two sentences, what belongs there.
 5. **Confirm `data/raw/` is ignored.** Open `.gitignore` and check the line is present. Raw data are never committed.
-6. **Use the shell** to write a recursive listing of your repository to `output/week00/file-list.txt`:
+6. **Use the shell** (Terminal on macOS, Git Bash on Windows) to write a recursive listing of your repository to `output/week00/file-list.txt`:
 
 ```bash
 mkdir -p output/week00

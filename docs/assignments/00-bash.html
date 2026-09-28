@@ -657,7 +657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Clone it</strong> into <code>~/GitHub/</code> on your computer (Tutorial 1).</li>
 <li><strong>Edit each <code>README.md</code></strong> inside <code>code/</code>, <code>data/</code>, and <code>output/</code> so it says, in one or two sentences, what belongs there.</li>
 <li><strong>Confirm <code>data/raw/</code> is ignored.</strong> Open <code>.gitignore</code> and check the line is present. Raw data are never committed.</li>
-<li><strong>Use the shell</strong> to write a recursive listing of your repository to <code>output/week00/file-list.txt</code>:</li>
+<li><strong>Use the shell</strong> (Terminal on macOS, Git Bash on Windows) to write a recursive listing of your repository to <code>output/week00/file-list.txt</code>:</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> output/week00</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-path</span> ./.git <span class="at">-prune</span> <span class="at">-o</span> <span class="at">-type</span> f <span class="at">-print</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="op">&gt;</span> output/week00/file-list.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
