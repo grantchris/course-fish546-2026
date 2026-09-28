@@ -512,7 +512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul class="task-list">
 <li><label><input type="checkbox">The <code>.qmd</code> and its rendered <code>.html</code> are both committed.</label></li>
 <li><label><input type="checkbox">Rendered from a clean session (Session → Restart R, then Render).</label></li>
-<li><label><input type="checkbox">Paths are relative to the repository root.</label></li>
+<li><label><input type="checkbox">Paths are relative, not absolute: from a notebook, reach the rest of the repository with <code>../</code> (for example <code>../output/week03/</code>).</label></li>
 <li><label><input type="checkbox">Output tables and figures are saved under <code>output/</code>, not only printed in the HTML.</label></li>
 <li><label><input type="checkbox">No raw data under <code>data/raw/</code> are committed.</label></li>
 <li><label><input type="checkbox">Software, platform, and any container or environment used are named.</label></li>

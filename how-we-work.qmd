@@ -85,7 +85,7 @@ date: 2026-04-17
 
 - [ ] The `.qmd` and its rendered `.html` are both committed.
 - [ ] Rendered from a clean session (Session → Restart R, then Render).
-- [ ] Paths are relative to the repository root.
+- [ ] Paths are relative, not absolute: from a notebook, reach the rest of the repository with `../` (for example `../output/week03/`).
 - [ ] Output tables and figures are saved under `output/`, not only printed in the HTML.
 - [ ] No raw data under `data/raw/` are committed.
 - [ ] Software, platform, and any container or environment used are named.
