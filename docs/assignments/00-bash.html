@@ -649,10 +649,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ol type="1">
+<li><strong>Accept your course organization invitation.</strong> Send the instructor your GitHub username, then accept the emailed invitation (or open <a href="https://github.com/orgs/course-fish546-2026/invitation">github.com/orgs/course-fish546-2026/invitation</a>). If the organization doesn’t appear as an owner in the next step, this is why.</li>
 <li><strong>Create your repository</strong> from the <a href="https://github.com/course-fish546-2026/project-template">project template</a> into the course organization: open the template page, click the green <strong>Use this template</strong> button at the top right of the file list (next to the <strong>Code</strong> button; you must be signed in), choose <strong>Create a new repository</strong>, and set the owner to <code>course-fish546-2026</code>. Name it something short and yours (for example <code>lastname-546</code>). The template already contains the standard layout:</li>
 </ol>
 <pre class="text"><code>code/        data/raw/  data/processed/   output/   notebooks/   docs/</code></pre>
-<ol start="2" type="1">
+<ol start="3" type="1">
 <li><strong>Clone it</strong> into <code>~/GitHub/</code> on your computer (Tutorial 1).</li>
 <li><strong>Edit each <code>README.md</code></strong> inside <code>code/</code>, <code>data/</code>, and <code>output/</code> so it says, in one or two sentences, what belongs there.</li>
 <li><strong>Confirm <code>data/raw/</code> is ignored.</strong> Open <code>.gitignore</code> and check the line is present. Raw data are never committed.</li>
@@ -660,10 +661,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> output/week00</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-path</span> ./.git <span class="at">-prune</span> <span class="at">-o</span> <span class="at">-type</span> f <span class="at">-print</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="op">&gt;</span> output/week00/file-list.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="6" type="1">
+<ol start="7" type="1">
 <li><strong>Write your first notebook entry.</strong> Copy <code>notebooks/_template.qmd</code> to <code>notebooks/week00.qmd</code>. In section 1, describe what you set up and paste the first ten lines of the file list. Fill in the other sections briefly (your draft project idea counts as progress). Render it.</li>
 <li><strong>Commit and push.</strong> Both the <code>.qmd</code> and the rendered <code>.html</code>.</li>
-<li><strong>Open a Project Proposal issue</strong> on the <a href="https://github.com/sr320/course-fish546-2026/issues/new/choose">course repository</a>. A rough draft is fine. Then post the commit link from step 7 as the first comment. To find it: on your repository’s GitHub page, click the <strong>commits</strong> count (the clock icon above the file list, e.g.&nbsp;“12 Commits”), then click the message of your most recent commit. Copy the URL from your browser’s address bar; it looks like <code>https://github.com/course-fish546-2026/your-repo/commit/3f9a2c1…</code>. Paste that URL as a comment on your Project Proposal issue.</li>
+<li><strong>Open a Project Proposal issue</strong> on the <a href="https://github.com/sr320/course-fish546-2026/issues/new/choose">course repository</a>. A rough draft is fine. Then post the commit link from step 8 as the first comment. To find it: on your repository’s GitHub page, click the <strong>commits</strong> count (the clock icon above the file list, e.g.&nbsp;“12 Commits”), then click the message of your most recent commit. Copy the URL from your browser’s address bar; it looks like <code>https://github.com/course-fish546-2026/your-repo/commit/3f9a2c1…</code>. Paste that URL as a comment on your Project Proposal issue.</li>
 </ol>
 </section>
 <section id="what-goes-in-your-notebook-entry" class="level2">
