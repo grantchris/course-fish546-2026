@@ -34,7 +34,7 @@ mkdir -p output/week00
 find . -path ./.git -prune -o -type f -print | sort > output/week00/file-list.txt
 ```
 
-7. **Write your first notebook entry.** Copy `notebooks/_template.qmd` to `notebooks/week00.qmd`. In section 1, describe what you set up and paste the first ten lines of the file list. Fill in the other sections briefly (your draft project idea counts as progress). Render it.
+7. **Write and render your first notebook entry.** In RStudio Desktop on your computer (installed in Tutorial 1), open your repository as a project: **File → Open Project…** → `fish546.Rproj` ([R Projects guide](../r-projects.qmd)). Open `notebooks/week00.qmd`, which the template already started for you. In section 1, describe what you set up and paste the first ten lines of the file list where shown. Fill in the other sections briefly (your draft project idea counts as progress). Click **Render**; this creates `notebooks/week00.html` next to the `.qmd`.
 8. **Commit and push.** Both the `.qmd` and the rendered `.html`.
 9. **Open a Project Proposal issue** on the [course repository](https://github.com/sr320/course-fish546-2026/issues/new/choose). A rough draft is fine. Then post the commit link from step 8 as the first comment. To find it: on your repository's GitHub page, click the **commits** count (the clock icon above the file list, e.g. "12 Commits"), then click the message of your most recent commit. Copy the URL from your browser's address bar; it looks like `https://github.com/course-fish546-2026/your-repo/commit/3f9a2c1…`. Paste that URL as a comment on your Project Proposal issue.
 

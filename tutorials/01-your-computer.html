@@ -38,7 +38,7 @@
     <section id="install">
       <div class="eyebrow">Step 1</div>
       <h2 class="sec">Install the tools</h2>
-      <p class="lede">You need three things: a GitHub account, a terminal, and Git (plus the GitHub Desktop app if you prefer clicking to typing).</p>
+      <p class="lede">You need a GitHub account, a terminal, Git, and R with RStudio Desktop (plus the GitHub Desktop app if you prefer clicking to typing).</p>
 
       <div class="card">
         <h4>GitHub account</h4>
@@ -57,6 +57,14 @@
         <h4>GitHub Desktop (optional)</h4>
         <p><a href="https://desktop.github.com/">GitHub Desktop</a> gives you buttons for the daily commit-and-push loop if you'd rather click than type. It works alongside Git in the terminal; use whichever you like.</p>
 
+        <h4>R and RStudio Desktop</h4>
+        <p>You'll render your first notebook entry on your own computer in Week 0, before you have Raven. Install these two, in this order, accepting the default options:</p>
+        <ol>
+          <li><strong>R</strong> from <a href="https://cran.r-project.org/">CRAN</a>: choose your system (macOS, Windows, or Linux) and download the latest release. On a Mac, pick the installer that matches your chip (Apple silicon or Intel).</li>
+          <li><strong>RStudio Desktop</strong> from <a href="https://posit.co/download/rstudio-desktop/">Posit</a> (free). It includes <strong>Quarto</strong>, which turns your <code>.qmd</code> notebooks into HTML, so there's nothing else to install.</li>
+        </ol>
+        <p>Open RStudio once to check it starts: you should see a Console pane showing the R version.</p>
+
         <h4>Verify Git works</h4>
         <p>Open your terminal and run:</p>
         <pre><span class="p">git --version</span>
@@ -68,6 +76,7 @@
       <div class="check" data-check>
         <label><input type="checkbox"> I have a GitHub account and gave my username to the instructor</label>
         <label><input type="checkbox"> I have a terminal (Terminal on macOS, Git Bash on Windows) and <code>git --version</code> prints a version in it</label>
+        <label><input type="checkbox"> R and RStudio Desktop are installed, and RStudio opens</label>
       </div>
     </section>
 
