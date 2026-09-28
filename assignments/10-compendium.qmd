@@ -8,12 +8,21 @@ format:
 ---
 
 ::: {.callout-note appearance="simple"}
-**Due at the final class meeting.** Tag the release `v1.0` in your repository and post the tag link on your Project Proposal issue. Topic: [Presentations and the Last Mile](../lectures/10-lastmile.qmd). Rubric: [How We Work](../how-we-work.qmd#final-compendium).
+**Due at the final class meeting.** Create a release named `v1.0` in your repository and post its link on your Project Proposal issue. Topic: [Presentations and the Last Mile](../lectures/10-lastmile.qmd). Rubric: [How We Work](../how-we-work.qmd#final-compendium).
 :::
 
 ## Goal
 
 Deliver a complete, reproducible project package: question, data, workflow, results, caveats, and the artifacts that let someone else inspect or rerun the work.
+
+## Making the `v1.0` release
+
+A release (tag) is a named snapshot of your repository that does not change when you push more commits. When your compendium is finished and pushed:
+
+1. On your repository's GitHub page, click **Releases** in the right-hand sidebar, then **Draft a new release** (or **Create a new release**).
+2. Click **Choose a tag**, type `v1.0`, and select **Create new tag: v1.0 on publish**.
+3. Give it a title such as "Final compendium" and click **Publish release**.
+4. Copy the release page URL (it ends in `/releases/tag/v1.0`) and post it on your Project Proposal issue.
 
 ## Required components
 

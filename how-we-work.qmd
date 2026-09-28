@@ -22,6 +22,11 @@ Everything in this course runs on one repeating cycle. There is one deliverable 
 4. **Push** by **Friday 5:00pm**.
 5. **Post** the commit link as a comment on your **Project Proposal issue**. The instructor replies there with feedback.
 
+::: {.callout-tip}
+## Finding your commit link
+To get the commit link: on your repository's GitHub page, click the **commits** count (the clock icon above the file list, e.g. "12 Commits"), then click the message of your most recent commit. Copy the URL from your browser's address bar; it looks like `https://github.com/course-fish546-2026/your-repo/commit/3f9a2c1…`. Paste that URL as a comment on your Project Proposal issue.
+:::
+
 That is the whole submission contract. Weekly entries are 60% of your grade; the mid-quarter and final presentations are 15%; the final compendium is 25%. Your best 8 of 9 weekly entries count.
 
 ::: {.callout-note}
@@ -69,7 +74,7 @@ date: 2026-04-17
 ## 3. Project progress
 <!-- What moved this week, with links to commits, files, or figures. -->
 
-## 4. Blockers
+## 4. Where I'm stuck
 <!-- Specific problems, what you tried, and any linked Help Request. Or "none". -->
 
 ## 5. Next week
@@ -96,12 +101,12 @@ Each entry is scored out of 100.
 | Evidence of work | 20 | Links to commits, reports, figures, tables, or logs give concrete proof of progress. | Evidence is present and generally supports the claims. | Evidence is thin, hard to inspect, or only partially connected. | Evidence is missing or cannot be accessed. |
 | Reproducible practice | 15 | Layout, paths, commit history, and documentation make the work easy to rerun and inspect. | Most materials are organized and version-controlled. | Organization is inconsistent, paths unclear, or outputs stale. | Work cannot be followed from the repository. |
 | Reflection questions | 15 | Answers show reasoning, connect to the week's material, and relate to the student's own project. | Answers are correct and complete. | Answers are partial or superficial. | Answers are missing. |
-| Blockers and help-seeking | 10 | Blockers are precise, with attempted fixes and a linked Help Request when needed. | Blockers or risks are named with enough context to respond. | Blockers are vague or raised late. | Blockers are absent despite stalled progress. |
+| Where I'm stuck and help-seeking | 10 | Problems are described precisely, with attempted fixes and a linked Help Request when needed. | Problems or risks are named with enough context to respond. | Problems are vague or raised late. | No problems are reported despite stalled progress. |
 | Next-week plan | 10 | Next steps are concrete, prioritized, and sized for one week. | Next steps are stated and plausible. | Next steps are too broad or not actionable. | Next steps are missing. |
 
 ## Final compendium
 
-The final compendium is the complete project package in your repository at the Week 10 tag. It should include a top-level `README.md`, final rendered report, source `.qmd` or scripts, key outputs, a data availability statement, a software and platform statement, and a link to your Project Proposal issue.
+The final compendium is the complete project package in your repository as of the `v1.0` release you create in Week 10. A release (Git calls it a *tag*) is a named, permanent snapshot of your repository at one moment, so the version you submit stays fixed even if you keep working. See the [compendium assignment](assignments/10-compendium.qmd) for how to make one. It should include a top-level `README.md`, final rendered report, source `.qmd` or scripts, key outputs, a data availability statement, a software and platform statement, and a link to your Project Proposal issue.
 
 | Criterion | Points | Excellent | Complete | Developing | Incomplete |
 |---|---:|---|---|---|---|

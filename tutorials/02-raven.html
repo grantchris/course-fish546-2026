@@ -134,7 +134,13 @@
       <h2 class="sec">Data hygiene on a shared server</h2>
       <div class="card">
         <ul>
-          <li><strong>Don't commit big data.</strong> Sequence files and large outputs don't belong in Git. Add them to <code>.gitignore</code> and keep them in <code>data/</code> on the server.</li>
+          <li><strong>Don't commit big data.</strong> Git is built for code and text, not for multi-gigabyte sequence files, and GitHub rejects any file over 100 MB. Keep large files on the server in <code>data/</code> (or <code>output/</code>) and tell Git to ignore them. <code>.gitignore</code> is a plain-text file at the top of your repository; each line is a pattern Git will skip. Your template already ignores <code>data/raw/</code>. To ignore more, open <code>.gitignore</code> in RStudio and add lines such as:
+            <pre><span class="c"># sequence files and alignments, wherever they are</span>
+<span class="p">*.fastq.gz</span>
+<span class="p">*.bam</span>
+<span class="c"># a whole folder of big intermediate files</span>
+<span class="p">output/week03/alignments/</span></pre>
+            Save, then run <code>git status</code>: the ignored files no longer show up as changes. Check <code>git status</code> before every commit; if you see a file you don't recognize or a large one, don't commit it. The files stay on the server; you record <em>where</em> they are and <em>how</em> you got them (below) instead of storing them in Git.</li>
           <li><strong>Record provenance.</strong> When you bring in raw data, store a checksum/manifest so you can prove it didn't change:
             <pre><span class="p">md5sum data/raw/*.fastq.gz &gt; data/raw/md5.txt</span></pre>
           </li>

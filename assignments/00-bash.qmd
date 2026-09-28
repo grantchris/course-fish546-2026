@@ -17,7 +17,7 @@ Have a working repository with the standard layout, one notebook entry rendered 
 
 ## Tasks
 
-1. **Create your repository** from the [project template](https://github.com/course-fish546-2026/project-template) into the course organization. Name it something short and yours (for example `lastname-546`). The template already contains the standard layout:
+1. **Create your repository** from the [project template](https://github.com/course-fish546-2026/project-template) into the course organization: open the template page, click the green **Use this template** button at the top right of the file list (next to the **Code** button; you must be signed in), choose **Create a new repository**, and set the owner to `course-fish546-2026`. Name it something short and yours (for example `lastname-546`). The template already contains the standard layout:
 
 ```text
 code/        data/raw/  data/processed/   output/   notebooks/   docs/
@@ -35,7 +35,7 @@ find . -path ./.git -prune -o -type f -print | sort > output/week00/file-list.tx
 
 6. **Write your first notebook entry.** Copy `notebooks/_template.qmd` to `notebooks/week00.qmd`. In section 1, describe what you set up and paste the first ten lines of the file list. Fill in the other sections briefly (your draft project idea counts as progress). Render it.
 7. **Commit and push.** Both the `.qmd` and the rendered `.html`.
-8. **Open a Project Proposal issue** on the [course repository](https://github.com/sr320/course-fish546-2026/issues/new/choose). A rough draft is fine. Then post the commit link from step 7 as the first comment.
+8. **Open a Project Proposal issue** on the [course repository](https://github.com/sr320/course-fish546-2026/issues/new/choose). A rough draft is fine. Then post the commit link from step 7 as the first comment. To find it: on your repository's GitHub page, click the **commits** count (the clock icon above the file list, e.g. "12 Commits"), then click the message of your most recent commit. Copy the URL from your browser's address bar; it looks like `https://github.com/course-fish546-2026/your-repo/commit/3f9a2c1…`. Paste that URL as a comment on your Project Proposal issue.
 
 ## What goes in your notebook entry
 
