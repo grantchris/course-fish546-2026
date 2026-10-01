@@ -39,7 +39,7 @@ Weekly entry: Friday 5:00 PM (Monday Nov 30 for Thanksgiving week; see the [Sche
 | Place | What goes there | How |
 |---|---|---|
 | **Your repository** (in the course org, created from the [project template](https://github.com/course-fish546-2026/project-template)) | All code, outputs, weekly notebook entries, README, final compendium | Clone, commit, push. Raw data are recorded, not committed. |
-| **Course repository** ([issues](https://github.com/sr320/course-fish546-2026/issues)) | One **Project Proposal** issue per student (your home base for the quarter); **Help Request** issues for any question or when you are stuck | Use the issue forms. All course communication happens here. Weekly commit links and tutorial completion blocks go as comments on your proposal issue. |
+| **Course repository**, `sr320/course-fish546-2026` ([issues](https://github.com/sr320/course-fish546-2026/issues)). Not your own repository. | One **Project Proposal** issue per student (your home base for the quarter); **Help Request** issues for any question or when you are stuck | Use the issue forms. All course communication happens here. Weekly commit links and tutorial completion blocks go as comments on your proposal issue. |
 | **Roberts Lab Handbook** ([robertslab.github.io/resources](https://robertslab.github.io/resources/)) | The reference standard for computing practices, data management, Raven, and Klone | Keep it open in a tab. |
 
 ### Platforms
@@ -170,7 +170,7 @@ Quarto is the format for notebook entries and the final report because it keeps 
 
 ### GitHub Issues
 
-Two forms, on the [course repository](https://github.com/sr320/course-fish546-2026/issues/new/choose):
+Two forms, on the course repository, **`sr320/course-fish546-2026`** (not your own repository): [open a new issue](https://github.com/sr320/course-fish546-2026/issues/new/choose).
 
 - **Project Proposal.** One per student, opened in Week 0 or 1. Your weekly commit links and tutorial completion blocks go here as comments. Edit the top post as the project evolves.
 - **Help Request.** When you are stuck. Include the platform, the exact command, the exact error text, what you already tried, and a link to the relevant commit or output.

@@ -3,7 +3,7 @@ title: "R Projects in RStudio"
 subtitle: "Open your repository the same way on every platform"
 ---
 
-An **R Project** is how RStudio knows which folder you are working in. Your course repository already contains one: the file `fish546.Rproj` at the top level. Opening that file, instead of just browsing to the folder, is the habit that makes your paths work the same on your laptop, Raven, and Klone.
+An **R Project** is how RStudio knows which folder you are working in. Your repository already contains one: the file `fish546.Rproj` at the top level. Opening that file, instead of just browsing to the folder, is the habit that makes your paths work the same on your laptop, Raven, and Klone.
 
 ## What opening the project does
 
