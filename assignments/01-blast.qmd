@@ -26,10 +26,21 @@ CCTATACCTAATCTTCGGTGCATGAGCCGGAATAGTAGGGACAGCCCTAAGCCTCCTCATTCGAGCAGAATTAGGCCAAC
 
 ## Tasks
 
-1. Save the query as `data/week01/query.fasta` (small query files are fine to commit).
+1. Save the query as `data/processed/week01/query.fasta`. It is a small file you made, not a raw download, so it belongs under `data/processed/` and is fine to commit (`data/raw/` stays ignored).
 2. Run a BLAST search with NCBI web BLAST, or command-line BLAST on Raven if you already have it working.
 3. Save the top-hit table or downloaded results under `output/week01/`.
 4. In your notebook entry, report the database searched, top hit, percent identity, query coverage, e-value, and whether the result makes biological sense.
+
+::: {.callout-tip collapse="true"}
+## Web BLAST in 6 steps
+
+1. Go to [NCBI BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) and click **Nucleotide BLAST**.
+2. Paste the whole query, header line included, into **Enter Query Sequence**. Give the search a title, such as `week01 COI practice`.
+3. Under **Choose Search Set**, keep **Standard databases** and choose the core nucleotide database (`core_nt`; older pages call it `nt`). Leave **Organism** blank so the search is not biased toward a group you already expect.
+4. Under **Program Selection**, keep **Highly similar sequences (megablast)**, which fits a COI barcode. Click **BLAST**. Results usually take under a minute; leave the tab open.
+5. On the results page, stay on the **Descriptions** tab. Click **Download** and choose **Hit Table (CSV)**. Save it as `output/week01/blast-hits.csv`. Write down the **RID** shown at the top and today's date.
+6. Look past the first row. Compare the top five to ten hits for percent identity, query coverage, and organism, and click a hit to see its alignment. This is the evidence for your interpretation.
+:::
 
 ## In your project
 
@@ -57,6 +68,27 @@ Your entry should make the search auditable:
 ## The one pull request
 
 This is the only week that requires a pull request. Fork the [course repository](https://github.com/sr320/course-fish546-2026), add one line to `roster.md` with your name, your repository link, and your project track, and open a pull request. We review and merge them together in Thursday's session. After this week, all of your work goes directly into your own repository.
+
+::: {.callout-tip collapse="true"}
+## Fork and pull request, step by step
+
+Everything happens in the browser; no cloning needed.
+
+1. Sign in to GitHub and open the [course repository](https://github.com/sr320/course-fish546-2026).
+2. Click **Fork** (top right), keep your own account as the owner, and click **Create fork**. You now have a copy at `github.com/your-username/course-fish546-2026`.
+3. In your fork, click `roster.md`, then the pencil icon (**Edit this file**).
+4. Add one row below the example, in the same format:
+
+   ```text
+   | Your Name | https://github.com/course-fish546-2026/your-repo | RNA-seq |
+   ```
+
+   For the track, use the same one you picked on your Project Proposal issue: RNA-seq, eDNA, Methylation, Variants, Annotation, or Other. A provisional choice is fine.
+5. Click **Commit changes…**, write a short message such as `Add Your Name to roster`, and commit directly to `main` in your fork.
+6. Back on your fork's main page, click **Contribute** → **Open pull request**. Check that the base is `sr320/course-fish546-2026` `main` and the diff shows only your one added line, then click **Create pull request**.
+
+If GitHub reports a conflict with someone else's line, leave it; we resolve those together on Thursday.
+:::
 
 ## Project Proposal
 
