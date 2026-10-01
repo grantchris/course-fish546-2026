@@ -87,7 +87,7 @@ For every BLAST result you use as evidence, record:
 
 ## GitHub Issues as the course notebook
 
-This course uses two kinds of Issues on the course repository:
+This course uses two kinds of Issues on the course repository, [`sr320/course-fish546-2026`](https://github.com/sr320/course-fish546-2026/issues) (not your own repository):
 
 - **Project Proposal:** one home-base issue for your quarter project. Weekly commit links and tutorial completion blocks go here as comments.
 - **Help Request:** any question, or anything that failed. Say where it happened, the exact command and error text, and what you already tried.

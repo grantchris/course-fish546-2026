@@ -31,7 +31,7 @@ You should be able to:
 
 ### Work in a repository
 
-Every course artifact should live in your course repository unless there is a clear reason it should not. Raw or very large data are usually recorded but not committed.
+Every course artifact should live in your own repository unless there is a clear reason it should not. Raw or very large data are usually recorded but not committed.
 
 ### Make directories explain themselves
 
